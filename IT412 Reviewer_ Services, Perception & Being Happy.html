@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IT412 Reviewer: Services, Perception &amp; Being Happy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --paper:#ffffff; --ink:#1d1f23; --muted:#5f6570; --line:#e3dfd6;
+  --accent:#1f5f8b; --accent-soft:#e4eef6; --hl:#fff1a8; --hl-ink:#1d1f23;
+  --case:#7a3e9d; --case-soft:#f1e8f7; --ok:#2e7d4f; --ok-soft:#e3f3e9;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05);
+}
+[data-theme="dark"]{
+  --bg:#15171b; --paper:#1d2026; --ink:#e7e9ee; --muted:#9aa1ad; --line:#2d313a;
+  --accent:#7ab8e6; --accent-soft:#1f2e3b; --hl:#5b4c12; --hl-ink:#fff6cc;
+  --case:#c79be3; --case-soft:#2c2335; --ok:#6fd39b; --ok-soft:#1d3026;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15.5px/1.6 "IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.layout{display:grid;grid-template-columns:280px minmax(0,1fr);max-width:1240px;margin:0 auto;gap:32px;padding:24px}
+aside{position:sticky;top:24px;align-self:start;max-height:calc(100vh - 48px);overflow:auto;padding-right:4px}
+.brand{font:600 13px/1.3 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:4px 0 6px}
+.brand-title{font:600 22px/1.2 "IBM Plex Serif",serif;margin:0 0 16px}
+.search{position:relative;margin-bottom:14px}
+.search input{width:100%;padding:10px 12px 10px 34px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);font:inherit;font-size:14px}
+.search input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.progress{margin:0 0 14px;font-size:12.5px;color:var(--muted)}
+.bar{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+nav a{display:grid;grid-template-columns:30px 1fr 18px;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;text-decoration:none;color:var(--ink);font-size:14px}
+nav a:hover{background:var(--paper)}
+nav a.active{background:var(--accent-soft);color:var(--accent);font-weight:600}
+nav a .n{font:500 12px "IBM Plex Mono",monospace;color:var(--muted);text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:1px 0}
+nav a.active .n{color:var(--accent);border-color:var(--accent)}
+nav a .chk{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line)}
+nav a.done .chk{background:var(--ok);border-color:var(--ok);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
+nav a.hidden{display:none}
+.nav-sep{height:1px;background:var(--line);margin:10px 4px}
+.tools{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:9px;padding:7px 12px;font:500 13px "IBM Plex Sans",sans-serif;cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+[data-theme="dark"] .btn.primary{color:#0f1720}
+.btn.on{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+main{min-width:0}
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px 32px;box-shadow:var(--shadow);margin-bottom:24px}
+.hero h1{font:600 30px/1.2 "IBM Plex Serif",serif;margin:0 0 10px}
+.hero p{margin:0 0 8px;color:var(--muted)}
+.hero p strong{color:var(--ink)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.chapter{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:24px;box-shadow:var(--shadow);overflow:hidden}
+.chapter.hidden{display:none}
+.ch-head{display:flex;align-items:flex-end;gap:16px;padding:22px 32px 18px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--accent-soft),transparent)}
+.ch-head > div,.ch-head h2{margin:0}
+.ch-num{font:500 12px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.ch-head h2{font:600 26px/1.2 "IBM Plex Serif",serif;flex:1}
+.ch-head{flex-wrap:wrap}
+.ch-head .ch-num{width:100%;margin-bottom:-10px}
+.done-btn{border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:99px;padding:6px 14px;font:500 13px "IBM Plex Sans";cursor:pointer}
+.done-btn.done{background:var(--ok-soft);color:var(--ok);border-color:var(--ok)}
+.ch-body{padding:8px 32px 28px}
+.ch-body h3{font:600 17px/1.3 "IBM Plex Sans";margin:28px 0 10px;padding-left:12px;border-left:3px solid var(--accent)}
+.ch-body p{margin:10px 0}
+.ch-body ul,.ch-body ol{padding-left:22px;margin:8px 0}
+.ch-body li{margin:5px 0}
+.ch-body li::marker{color:var(--muted)}
+strong{background:linear-gradient(transparent 55%,var(--hl) 55%);color:var(--hl-ink);font-weight:600;padding:0 1px}
+[data-theme="dark"] strong{background:linear-gradient(transparent 50%,var(--hl) 50%)}
+body.plain strong{background:none;color:inherit}
+li.case{list-style:none;margin-left:-22px;background:var(--case-soft);border-radius:10px;padding:8px 12px}
+li.case strong{background:none;color:var(--case)}
+.tag{display:inline-block;font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--case);border-radius:5px;padding:1px 6px;margin-right:4px;vertical-align:1px}
+[data-theme="dark"] .tag{color:#1d1426}
+body.nocases li.case{display:none}
+.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--bg);font-weight:600;font-size:13px;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+mark.sr{background:#ffb84d;color:#1d1f23;border-radius:3px;padding:0 1px}
+/* Cheat sheet */
+#cheat .ch-body{padding-top:18px}
+.cs-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.cs-controls select{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:9px;padding:7px 10px;font:inherit;font-size:13px}
+.cs-table td.ans{cursor:pointer}
+.hide-ans .cs-table td.ans span{filter:blur(6px);user-select:none;transition:filter .15s}
+.hide-ans .cs-table td.ans.shown span{filter:none}
+.cs-table td.chc{font:500 12px "IBM Plex Mono",monospace;color:var(--muted);width:48px}
+.flash{display:none}
+.mode-cards .flash{display:block}
+.mode-cards .cs-table-wrap{display:none}
+.card{perspective:1200px;height:240px;cursor:pointer;margin:6px auto 14px;max-width:620px}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;box-shadow:var(--shadow);background:var(--paper)}
+.face .lbl{position:absolute;top:14px;left:18px;font:500 11px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.face .q{font:600 22px/1.35 "IBM Plex Serif",serif}
+.face.back{transform:rotateY(180deg);background:var(--accent-soft)}
+.face.back .q{font:500 19px/1.45 "IBM Plex Sans"}
+.face.back .q strong{background:none;color:var(--accent)}
+.card-nav{display:flex;justify-content:center;gap:10px;align-items:center}
+.count{font:500 13px "IBM Plex Mono",monospace;color:var(--muted);min-width:80px;text-align:center}
+.hint{text-align:center;font-size:12.5px;color:var(--muted);margin-top:8px}
+.empty{display:none;text-align:center;color:var(--muted);padding:40px}
+.mobile-bar{display:none}
+.totop{position:fixed;right:20px;bottom:20px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--paper);box-shadow:var(--shadow);cursor:pointer;color:var(--ink);font-size:18px;opacity:0;pointer-events:none;transition:opacity .2s}
+.totop.show{opacity:1;pointer-events:auto}
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;padding:12px;gap:12px}
+  aside{position:static;max-height:none}
+  nav{display:none}
+  .nav-sep{display:none}
+  .mobile-bar{display:block;margin-bottom:10px}
+  .mobile-bar select{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:inherit}
+  .hero{padding:20px}
+  .ch-head,.ch-body{padding-left:18px;padding-right:18px}
+  .hero h1{font-size:24px}.ch-head h2{font-size:22px}
+}
+@media print{aside,.totop,.done-btn,.cs-controls{display:none}.layout{display:block}.chapter{break-inside:auto;box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside>
+  <div class="brand">IT412 · System Administration</div>
+  <div class="brand-title">Services &amp; Soft Skills Reviewer</div>
+  <div class="search">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Search terms (e.g. SNMP, VRRP)…" autocomplete="off">
+  </div>
+  <div class="progress"><span id="prog-text">0 of 8 chapters reviewed</span><div class="bar"><i id="prog-bar"></i></div></div>
+  <div class="mobile-bar"><select id="jump"><option value="">Jump to chapter…</option></select></div>
+  <nav id="nav">
+<a href="#ch22" data-id="ch22"><span class="n">22</span><span class="t">Service Monitoring</span><span class="chk" title="Reviewed"></span></a>
+<a href="#ch23" data-id="ch23"><span class="n">23</span><span class="t">Email Service</span><span class="chk" title="Reviewed"></span></a>
+<a href="#ch24" data-id="ch24"><span class="n">24</span><span class="t">Print Service</span><span class="chk" title="Reviewed"></span></a>
+<a href="#ch27" data-id="ch27"><span class="n">27</span><span class="t">Remote Access Service</span><span class="chk" title="Reviewed"></span></a>
+<a href="#ch28" data-id="ch28"><span class="n">28</span><span class="t">Software Depot Service</span><span class="chk" title="Reviewed"></span></a>
+<a href="#ch29" data-id="ch29"><span class="n">29</span><span class="t">Web Services</span><span class="chk" title="Reviewed"></span></a>
+<a href="#ch31" data-id="ch31"><span class="n">31</span><span class="t">Perception and Visibility</span><span class="chk" title="Reviewed"></span></a>
+<a href="#ch32" data-id="ch32"><span class="n">32</span><span class="t">Being Happy</span><span class="chk" title="Reviewed"></span></a>
+  <div class="nav-sep"></div>
+  <a href="#cheat" data-id="cheat"><span class="n">★</span><span class="t">Cheat Sheet &amp; Flashcards</span><span></span></a>
+  </nav>
+  <div class="tools">
+    <button class="btn" id="tg-hl" title="Toggle highlighter on bold terms">Highlights</button>
+    <button class="btn" id="tg-case" title="Show or hide case studies">Case studies</button>
+    <button class="btn" id="tg-theme">Dark mode</button>
+  </div>
+</aside>
+<main>
+  <div class="hero">
+    <h1>IT412 Reviewer: Services, Perception &amp; Being Happy</h1>
+    <p>Covers Chapters 22, 23, 24, 27, 28, 29, 31 and 32 of <em>The Practice of System and Network Administration, 2nd Ed.</em> (Limoncelli, Hogan, Chalup). <strong>Bold</strong> = likely exam material: definitions, named concepts, rules of thumb, and lists the book stresses. Case-study names are kept short because they are often used as situational items.</p>
+<p>Every chapter follows the same pattern: <strong>The Basics</strong> (what every site must do) and <strong>The Icing</strong> (improvements once the basics are solid).</p>
+    <div class="legend">
+      <span><strong>highlighted</strong> = likely exam term</span>
+      <span><span class="tag">Case</span> = book case study (situational items)</span>
+      <span>★ Cheat sheet at the end has flashcards</span>
+    </div>
+  </div>
+<section class="chapter" id="ch22" data-title="Service Monitoring"><header class="ch-head"><div class="ch-num">Chapter 22</div><h2>Service Monitoring</h2><button class="done-btn" data-id="ch22">Mark reviewed</button></header><div class="ch-body"><p>Key axiom: <strong>"If you aren't monitoring it, you aren't managing it."</strong> (adapted from "If you can't measure it, you can't manage it"). Monitoring is used to <strong>detect and fix problems, find their source, predict and avoid future problems, and show SA achievements</strong>.</p>
+<h3>The two primary types</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>Historical monitoring</th>
+<th>Real-time monitoring</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose</td>
+<td>Long-term <strong>uptime, usage, performance statistics</strong></td>
+<td><strong>Alerts SAs to a failure as soon as it happens</strong></td>
+</tr>
+<tr>
+<td>Components</td>
+<td><strong>Collecting</strong> the data + <strong>viewing</strong> the data</td>
+<td><strong>Monitoring</strong> component (notices failure) + <strong>alerting</strong> component (tells someone)</td>
+</tr>
+<tr>
+<td>Output</td>
+<td><strong>Conclusions</strong> and <strong>graphs</strong> (e.g., "99.99% uptime last year")</td>
+<td>Alerts / pages / tickets</td>
+</tr>
+<tr>
+<td>Style of SA work</td>
+<td><strong>Proactive</strong></td>
+<td>Improves <strong>reactive</strong> SA work</td>
+</tr>
+<tr>
+<td>Storage needs</td>
+<td><strong>Large</strong> (lots of disk, databases, processing)</td>
+<td><strong>Minimal</strong> (last result, time since last status change)</td>
+</tr>
+<tr>
+<td>Example tools</td>
+<td><strong>Cricket, Orca</strong> (also MRTG)</td>
+<td><strong>Nagios, Big Brother</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Goal of real-time monitoring: <strong>SAs notice outages before customers do</strong>. The two types are usually done by <strong>different systems</strong>.</p>
+<h3>Warnings about monitoring itself</h3>
+<ul>
+<li><strong>Bandwidth:</strong> rule of thumb — monitoring should use <strong>no more than 1% of available bandwidth</strong>. On slow links, use remote monitoring stations or a <strong>trap-based</strong> system (device notifies on failure) instead of <strong>polling-based</strong> (monitor checks periodically).</li>
+<li><strong>CPU/memory:</strong> test failure modes (monitoring server down, network outage). When switching systems, <strong>turn off the old one</strong>.</li>
+<li><strong>Security:</strong> monitoring systems can be abused or spoofed; use <strong>strong authentication</strong>. <strong>SNMPv1 has weak authentication.</strong></li>
+</ul>
+<h3>22.1.1 Historical Monitoring</h3>
+<ul>
+<li>Collects data by <strong>polling at intervals</strong>; used for graphs, finding past minor problems, and <strong>monitoring SLA conformance</strong>.</li>
+<li>Uses: <strong>capacity planning</strong> (when to upgrade network, memory, CPU, disks), <strong>usage-based billing</strong>, <strong>anomaly detection</strong>, reports to management, <strong>budget justification</strong>.</li>
+<li>Disk use is reduced by:<ul>
+<li><strong>Condensing</strong> = replacing detailed data with <strong>averages</strong> (5-minute data → hourly averages saves ~<strong>90%</strong> storage).</li>
+<li><strong>Expiring</strong> = <strong>deleting</strong> old data (or archiving to DVD/tape).</li>
+</ul>
+</li>
+<li>Trade-off: condensing/expiring reduces <strong>detail and historical perspective</strong>. How you use the data decides how much to keep (e.g., monthly billing → keep full detail for a few years).</li>
+<li>Polling should be <strong>configurable</strong> and use standard mechanisms: <strong>SNMPv2, ICMP echo (ping), TCP connections with pattern matching</strong>.</li>
+<li>Record <strong>latency</strong> — <strong>a very slow service is practically the same as one that doesn't respond</strong>.</li>
+<li>Need both <strong>custom tests</strong> and many <strong>predefined tests</strong>.</li>
+<li>Output = <strong>graphs with clear units on each axis</strong>; graphs are good documentation for management.</li>
+</ul>
+<h3>22.1.2 Real-Time Monitoring</h3>
+<ul>
+<li>Must both <strong>poll</strong> and <strong>receive alerts (traps)</strong> from systems.</li>
+<li>Send alerts to <strong>multiple recipients</strong> via several mechanisms (email, paging, phone, trouble tickets) — one person's pager may be dead.</li>
+<li>Monitors two things:<ul>
+<li><strong>Availability monitoring</strong> = detecting <strong>failures</strong> of hosts, apps, devices, interfaces, connections.</li>
+<li><strong>Capacity monitoring</strong> = detecting when a component <strong>is or is about to be overloaded</strong> (CPU, memory, disk, swap, ports, users...).</li>
+</ul>
+</li>
+<li><strong>Most important components:</strong> the <strong>notification mechanism</strong> and the <strong>site's processes for handling alerts</strong>.</li>
+</ul>
+<p><strong>SNMP (Simple Network Monitoring Protocol)</strong></p>
+<ul>
+<li><strong>GET</strong> = ask a device for a variable's value; <strong>PUT</strong> = change a variable; <strong>trap</strong> = "reply when a variable crosses a value."</li>
+<li><strong>MIB</strong> = a <strong>group of related variables</strong> (standard MIBs exist for Ethernet, DSL, disks, printers, CPUs...).</li>
+<li>Weakness: <strong>one variable per packet</strong> → many packets; data encoded in complex <strong>ASN.1</strong> (2002 router flaw).</li>
+<li>Password = <strong>community string</strong>; defaults <strong>public</strong> (GET) and <strong>private</strong> (PUT). SNMPv2/v3 encrypt it.</li>
+<li><strong>Five recommendations:</strong> (1) accept SNMP only from <strong>specific IP ranges</strong> (one per redundant monitoring center); (2) use <strong>SNMPv3</strong>, encrypt community strings; (3) <strong>change community strings once a year</strong> with a transition period; (4) <strong>automate a weekly audit</strong> trying old/default passwords from inside and outside the ranges; (5) <strong>track vendor security bulletins</strong>.</li>
+</ul>
+<p><strong>Alerting mechanism</strong></p>
+<ul>
+<li><strong>Must not depend on any component of the system being monitored.</strong></li>
+<li>Email is popular but <strong>should not be the only mechanism</strong> (can fail, can be delayed). Paging can be spied on — <strong>never send passwords</strong>.</li>
+<li>Need a written <strong>alert-handling policy</strong>: who gets alerts, coordination, <strong>escalation path</strong>, frequency, <strong>severity</strong>.</li>
+<li>Capacity warnings → open a ticket <strong>only when the state changes</strong> from acceptable to unacceptable. Critical outages → <strong>page the on-call person</strong> repeatedly.</li>
+<li>Messages must be <strong>clear</strong> ("web server on www-20 is not responding", not raw IPs/OIDs) but must <strong>not make wrong assumptions</strong> ("not responding" vs "not running").</li>
+<li class="case"><span class="tag">Case</span> <strong>"I'm Hot! I'm Wet!"</strong> — HVAC alarm phoned the SA's home; wife thought it was a prank. Lesson: <strong>test your alerting system and inform those who might receive it.</strong></li>
+</ul>
+<p><strong>Escalation</strong> — policy on <strong>how long a problem may persist before passing to another person</strong> (usually a manager); covers vacations or non-response. <strong>Acknowledging</strong> an alarm = "snooze button"; without it SAs turn alarms off and forget to reset them.</p>
+<p><strong>Active monitoring systems</strong> — <strong>detect and automatically fix</strong> known problems (e.g., reset a modem port).</p>
+<ul>
+<li>Can only give a <strong>temporary fix</strong>, not fix the <strong>root cause</strong>; must <strong>report what it did and open a ticket</strong>.</li>
+<li>Can make diagnosis harder; SAs may get lazy → <strong>entropy</strong> sets in.</li>
+<li class="case"><span class="tag">Case</span> <strong>log rotation "fix"</strong> — debug cron job filled /var/mail; auto-rotation wiped all logs to zero length.</li>
+<li>Can't fix <strong>physical failures</strong> (no paper/ink) or multi-host problems.</li>
+<li><strong>Security risk:</strong> privileged access to many machines makes it a <strong>target</strong>; limit what it can do.</li>
+</ul>
+<h3>22.2 The Icing</h3>
+<ul>
+<li><strong>Accessibility:</strong> any SA should be able to <strong>add items to monitor</strong>, not just the 1–2 who set it up. Needs <strong>good documentation</strong>, especially <strong>preferred defaults</strong>.</li>
+<li><strong>Pervasive monitoring:</strong> monitor <strong>everything</strong> (beyond desktops) by <strong>building it into the installation process</strong>; if not automatable, auto-generate a help ticket.</li>
+<li><strong>Device discovery:</strong> detects <strong>new devices added to the network</strong> — catches ones that fell through the cracks; saves debugging time.</li>
+<li><strong>End-to-end tests:</strong> the monitor <strong>acts as a customer</strong> and checks the <strong>whole transaction</strong> completes (send mail, buy an item, check DB records). Case: <strong>Mailping</strong> (AT&amp;T/Lucent) — relayed mail off 80+ servers and measured delivery time.</li>
+<li><strong>Application response time monitoring:</strong> measures speed <strong>as the end user sees it</strong>; historical chart + <strong>threshold alert</strong>. Extension of end-to-end testing.</li>
+<li><strong>Scaling:</strong><ul>
+<li>Problem: a polling run not finished before the next starts. Case: <strong>WebTV</strong> outgrew <strong>MRTG</strong> → wrote <strong>Cricket</strong>.</li>
+<li>Fix: <strong>remote probes</strong> send <strong>summaries</strong> to a <strong>master station</strong> (holds master config). <strong>Best method for both types: several data gatherers + one central master.</strong></li>
+<li>Too many "red" items → need <strong>finer priority granularity</strong> than green/yellow/red.</li>
+<li><strong>Dependency chains:</strong> one upstream outage floods alerts; system should send one alert naming the <strong>root cause</strong>.</li>
+<li>Let an SA <strong>"claim" a problem</strong> (via ticket system) to avoid uncoordinated fixing.</li>
+</ul>
+</li>
+<li><strong>Metamonitoring = monitoring your monitoring system.</strong> Simplest form: it monitors itself (e.g., own disk filling). For critical sites, a <strong>second system monitors the primary</strong>. Should be <strong>based on an SLA</strong> (e.g., alert if probes haven't run in 10 minutes). Historical metamonitoring predicts when the system can't meet its SLA.</li>
+</ul>
+<p><strong>Conclusion:</strong> Both types are <strong>required at e-commerce sites</strong> (customers just go elsewhere). Monitoring is a project that <strong>keeps increasing in scope</strong>.</p></div></section>
+<section class="chapter" id="ch23" data-title="Email Service"><header class="ch-head"><div class="ch-num">Chapter 23</div><h2>Email Service</h2><button class="done-btn" data-id="ch23">Mark reviewed</button></header><div class="ch-body"><p>Email is a <strong>utility service</strong> (like dial tone or power) and often <strong>the only application the CEO uses</strong>. Nearly <strong>45% of business-critical information</strong> lives in email. <strong>Reliability is the focal point; scalability is a close second.</strong> It depends on good <strong>namespaces, security architecture, monitoring, and backups</strong>.</p>
+<p>Foundations: a <strong>simple, clear, well-documented architecture</strong>, <strong>open protocols and standards</strong>, and the rule that <strong>nothing is a service until it is monitored</strong>.</p>
+<h3>23.1.1 Privacy Policy</h3>
+<ul>
+<li><strong>Every site must have an email privacy policy, communicated to and acknowledged by every employee.</strong></li>
+<li>It must state <strong>when and by whom</strong> email may be read; that admins may <strong>inadvertently see email</strong> while diagnosing; and that email crossing the <strong>Internet is not private</strong> (don't send unencrypted confidential info).</li>
+<li><strong>Upper management decides the policy; SAs implement it.</strong></li>
+</ul>
+<h3>23.1.2 Namespaces</h3>
+<ul>
+<li>The email namespace is the <strong>most visible namespace</strong> (to customers and employees).</li>
+<li><strong>Most fundamental rule: use the same email address for internal and external email.</strong></li>
+<li>The book <strong>discourages first.last addresses</strong> (e.g., John.Smith) — name collisions force changes that <strong>invalidate business cards</strong>. Eric Allman (Sendmail creator) opposed full names as addresses since <strong>they are not unique</strong>.</li>
+<li>Preferred: <strong>unique corporate-wide name tokens</strong> (chogan, tal, jsmith) + a <strong>directory service</strong> for lookup.</li>
+<li>Tokens: user may choose (default from initials/name), <strong>hard to change</strong>, and <strong>not reused for a couple of months</strong> (prevents hijacking a departed employee's mail).</li>
+</ul>
+<h3>23.1.3 Reliability</h3>
+<ul>
+<li>Failures cause <strong>stress, support calls, missed contracts, lost customers</strong>.</li>
+<li><strong>Email is not a place to experiment</strong> — deploy only after extensive testing.</li>
+<li class="case"><span class="tag">Case</span> <strong>Email Service Beta Test</strong> — a company moved <strong>100,000 employees</strong> to one server farm; network overloaded, <strong>no email for nearly a month</strong>; then beta-tested new software on it; rogue servers appeared.</li>
+<li>Use <strong>RAID</strong>; ideally <strong>hot spares</strong>; if not, a <strong>rapid restore plan</strong>.</li>
+</ul>
+<h3>23.1.4 Simplicity</h3>
+<p><strong>Complexity decreases reliability.</strong> Limit the number of machines; <strong>never involve desktops in mail delivery</strong>.</p>
+<p><strong>Five main aspects of an email service:</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mail transport (MTA)</strong></td>
+<td>Moves mail <strong>server to server</strong></td>
+</tr>
+<tr>
+<td><strong>Mail delivery (MDA)</strong></td>
+<td>Receives and <strong>stores</strong> mail at the destination server</td>
+</tr>
+<tr>
+<td><strong>Access</strong></td>
+<td>Access protocols (<strong>POP3, IMAP4</strong>) let the <strong>MUA</strong> (client) read mail</td>
+</tr>
+<tr>
+<td><strong>List processing</strong></td>
+<td>Delivers one message <strong>to a group</strong></td>
+</tr>
+<tr>
+<td><strong>Filtering</strong></td>
+<td><strong>Anti-spam and anti-virus</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Small site: all functions on <strong>one machine</strong> (+ maybe an Internet-facing relay). Large site: <strong>separate transport, delivery, list processing</strong>, ideally all the <strong>same type</strong> of system.</li>
+<li>Clients send mail via a <strong>relay</strong>; <strong>disable SMTP</strong> on machines not part of the service (use <strong>relay-only</strong> configs).</li>
+<li class="case"><span class="tag">Case</span> <strong>Bad Mail-Delivery Scheme</strong> — mail delivered to any host, From: showed the host; replies got "lost." Fix: <strong>hostname masquerading</strong> (central relay rewrites the sender address to hide the machine name).</li>
+<li><strong>Avoid gateways</strong> (translate between formats) — they add complexity and <strong>strip delivery history</strong>.</li>
+<li>Provide a <strong>single mechanism for mailing lists</strong>.</li>
+<li>Moving mailboxes between servers: use DNS aliases like <strong>username.pobox.example.com</strong> so clients don't need reconfiguring.</li>
+</ul>
+<h3>23.1.5 Spam and Virus Blocking</h3>
+<ul>
+<li><strong>Spam = UCE (unsolicited commercial email)</strong>; often <strong>&gt;50%</strong> of incoming Internet mail.</li>
+<li><strong>Best to block at the server</strong>, not the client — easier to upgrade; users disable client protection.</li>
+<li><strong>No perfect antispam software</strong> — it is an <strong>arms race</strong>. New viruses are nearly impossible to detect.</li>
+<li><strong>Centralize</strong> filtering; outside services can filter via the <strong>DNS MX record</strong> (privacy concerns).</li>
+</ul>
+<h3>23.1.6 Generality</h3>
+<ul>
+<li>Use <strong>open, universally accepted protocols</strong>. <strong>SMTP must be supported and should be the only transport protocol</strong>; new protocols are likely extensions like <strong>ESMTP</strong>.</li>
+<li>Support <strong>one or two standard client protocols</strong> → almost all mail clients work. Proprietary protocols <strong>lock customers in</strong>.</li>
+<li class="case"><span class="tag">Case</span> <strong>Nonstandard Protocols Are Expensive</strong> — acquired start-up had to buy a <strong>Windows PC for every UNIX/Mac user</strong> to use the parent's proprietary email.</li>
+</ul>
+<h3>23.1.7 Automation</h3>
+<ul>
+<li><strong>Account creation/deletion</strong> should automatically create/remove the mailbox and <strong>list memberships</strong>.</li>
+<li>Automate <strong>moving accounts</strong> between servers (load balancing).</li>
+<li><strong>Don't auto-forward mail for people who left</strong> — use an <strong>auto-reply</strong> giving the new address and saying they left.</li>
+<li>Let <strong>customers manage their own mailing lists</strong>.</li>
+<li>Periodic checks: accounts vs <strong>personnel database</strong>; no forwarding outside; disabled accounts off lists; <strong>unauthorized members on sensitive lists</strong>.</li>
+</ul>
+<h3>23.1.8 Basic Monitoring</h3>
+<ul>
+<li>Each machine <strong>responds to ping</strong> and to its TCP ports: <strong>SMTP 25, POP3 110, IMAP4 143</strong>.</li>
+<li>Monitor <strong>disk space, disk activity, CPU</strong>; keep a <strong>baseline</strong> of normal.</li>
+<li><strong>Monitor mail to postmaster</strong> — receives <strong>bounces</strong> with full headers and error messages.</li>
+<li>Monitor <strong>logs</strong> for <strong>message-flow rate</strong>.</li>
+</ul>
+<h3>23.1.9 Redundancy</h3>
+<ul>
+<li><strong>Relay and list-processing hosts:</strong> easy — <strong>DNS MX records</strong> + multiple identically configured servers.</li>
+<li><strong>Delivery hosts:</strong> make <strong>internally redundant</strong> (<strong>RAID</strong>) or use shared storage (<strong>NAS/SAN</strong>) with careful <strong>locking</strong>.</li>
+<li><strong>Client access:</strong> clients <strong>cache DNS</strong>, so redundancy must be at the <strong>IP level</strong> — <strong>load balancers (layer 4)</strong> or <strong>VRRP (Virtual Router Redundancy Protocol)</strong>.</li>
+</ul>
+<h3>23.1.10 Scaling</h3>
+<ul>
+<li><strong>Scale in advance of demand.</strong> Three variables drive traffic: <strong>message size, messages per person, number of people</strong>.</li>
+<li>Message size <strong>jumps with new technology</strong> (images, documents, audio/video).</li>
+<li><strong>Mail spool rule of thumb: peak = 2× regular use.</strong></li>
+<li><strong>Message size limits</strong> only as a <strong>temporary stopgap</strong> (or a really huge limit).</li>
+<li class="case"><span class="tag">Case</span> <strong>The Wrong Way to Scale</strong> — SA publicly blamed users whose clients auto-checked mail; should have <strong>monitored and fixed the root cause</strong>.</li>
+<li><strong>POP3 vs IMAP4:</strong></li>
+</ul>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>POP3</th>
+<th>IMAP4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mail location</td>
+<td><strong>Downloaded to client</strong>, server deletes copy</td>
+<td><strong>Stays on server</strong> (all folders)</td>
+</tr>
+<tr>
+<td>Server disk</td>
+<td>Minimal</td>
+<td><strong>Much greater</strong></td>
+</tr>
+<tr>
+<td>Connections</td>
+<td><strong>Short-lived</strong></td>
+<td><strong>Long-lived</strong>, many simultaneous</td>
+</tr>
+<tr>
+<td>Backups</td>
+<td>On client machines</td>
+<td><strong>Centrally controlled, predictable</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>List servers must handle <strong>unavailable destinations</strong> without delaying others.</li>
+</ul>
+<h3>23.1.11 Security Issues</h3>
+<ul>
+<li><strong>External mail relays are prime targets</strong> (exposed to Internet, access to internal network). <strong>Design security in from the start.</strong></li>
+<li><strong>Content scanning</strong> for viruses — check against <strong>privacy policy</strong>; must understand many formats (zip); plan for <strong>high disk I/O</strong>; scan desktops too.</li>
+<li>Prevent <strong>unauthorized relaying</strong>; provide <strong>secure remote email access</strong> (no plaintext passwords).</li>
+</ul>
+<h3>23.1.12 Communication</h3>
+<ul>
+<li>Tell customers the <strong>policies</strong> (privacy, forwarding off-site, backups, filtering, <strong>acceptable use</strong>) and risks (<strong>viruses, chain letters</strong>).</li>
+<li>Brief new hires verbally or with slides; some use <strong>web forms to acknowledge policies</strong>.</li>
+<li><strong>Document for SAs</strong>: failover/recovery, design diagrams of <strong>mail flow</strong>, preliminary debugging steps.</li>
+</ul>
+<h3>23.2 The Icing</h3>
+<ul>
+<li><strong>Encryption:</strong> especially for <strong>senior managers</strong>; must be <strong>quick, easy, integrated</strong> in the client, and <strong>equally easy for recipients to decrypt</strong>. Needs <strong>key management</strong> (key repository, revocation, <strong>key recovery</strong>). Beware <strong>"snake oil"</strong> vendors. <strong>Sarbanes-Oxley:</strong> company must be able to <strong>recover the private key</strong>.</li>
+<li><strong>Email Retention Policy:</strong> many companies <strong>don't back up email or discard backups quickly</strong> because in a <strong>lawsuit, backups are subpoenaed</strong> and searching them is very expensive. A <strong>document retention policy</strong> gets extended to email (often for <strong>SOX</strong> compliance). POP3 mail on laptops complicates this.</li>
+<li><strong>Advanced Monitoring:</strong> for revenue-critical email, use <strong>end-to-end monitoring</strong> that emulates a real customer sending mail.</li>
+<li><strong>High-Volume List Processing:</strong> lists run <strong>centrally on servers</strong>; can be protected (moderated, members-only) or open; delegate control to list owners; need a <strong>list policy</strong> (work vs non-work lists). High-volume lists → <strong>commercial software</strong> or an experienced consultant; build across <strong>redundant systems</strong>; monitor <strong>elapsed time from first to last recipient</strong>.</li>
+</ul></div></section>
+<section class="chapter" id="ch24" data-title="Print Service"><header class="ch-head"><div class="ch-num">Chapter 24</div><h2>Print Service</h2><button class="done-btn" data-id="ch24">Mark reviewed</button></header><div class="ch-body"><p>Customers rank printing as <strong>one of the most critical services, second only to email</strong>. <strong>Printing is a utility; it should always work.</strong> Many SAs look down on printing, but <strong>SA priorities must align with customers'</strong> — business still runs on paper (signed contracts, proofreading). The chapter focuses on <strong>invariants</strong>: getting ink on the page, <strong>policies</strong>, <strong>print server design</strong>, and <strong>environment</strong>. <strong>Without policy, design has no direction; without design, printing is unstable.</strong></p>
+<h3>24.1.1 Level of Centralization</h3>
+<ul>
+<li><strong>Primary requirement:</strong> people can <strong>print to any printer they have permission to use</strong>.</li>
+<li>Cost recovery: <strong>per page</strong>, a <strong>"tax,"</strong> or each <strong>group funds its own</strong>.</li>
+<li>Typical: <strong>one printer per section</strong> (hallway, wing, floor); <strong>private printers</strong> for confidentiality, ego, or business reasons.</li>
+<li><strong>Trade-off: cost vs convenience.</strong> Example: 10 people × $100 desktop printers = $1,000 = a good <strong>shared network printer</strong>; with 20 people it's better quality at <strong>half the price</strong>.</li>
+<li class="case"><span class="tag">Case</span> <strong>No Standards for Printers</strong> — no control on purchases under $600 → dozens of models, many ended up at <strong>employees' homes</strong>; cost controls fixed it, though employees hated it.</li>
+</ul>
+<h3>24.1.2 Print Architecture Policy (written policies every site needs)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>Key points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>General printer architecture</strong></td>
+<td>How centralized: <strong>people per printer</strong>, who gets <strong>personal printers</strong>, how printers are networked</td>
+</tr>
+<tr>
+<td><strong>Print spool</strong></td>
+<td><strong>Spooler = device that receives jobs and holds them until the printer is ready.</strong> Also does <strong>access control</strong>, reroutes around broken printers. One spooler = <strong>single point of failure</strong> → hot standby/redundant spoolers</td>
+</tr>
+<tr>
+<td><strong>Maintenance</strong></td>
+<td>In-house, time &amp; materials, or <strong>service contract</strong>; when <strong>replacing is cheaper than repairing</strong></td>
+</tr>
+<tr>
+<td><strong>Accounting</strong></td>
+<td>Who pays for printers, repairs, <strong>supplies</strong>. <strong>Simplest: central budget.</strong> Per-page billing (universities) discourages waste. Goal: <strong>least-objectionable solution</strong></td>
+</tr>
+<tr>
+<td><strong>Supplies</strong></td>
+<td>Who orders/refills. Book <strong>recommends against customers changing toner</strong> (error-prone, wasteful; operators can shake cartridge for more pages)</td>
+</tr>
+<tr>
+<td><strong>Printer equipment standard</strong></td>
+<td>Part 1 (rarely changes): <strong>PostScript vs PCL</strong>, duplexing, protocol (<strong>LPD, SMB, AppleTalk, USB</strong>). Part 2: <strong>list of recommended printers/configs</strong>, updated regularly. Gives <strong>volume discounts</strong>, fewer supply types</td>
+</tr>
+<tr>
+<td><strong>Printer access</strong></td>
+<td>Who can print to and <strong>cancel jobs on</strong> which printers. Book's office stance: <strong>everyone can print anywhere and cancel any job</strong> (replaces faxing)</td>
+</tr>
+<tr>
+<td><strong>Printer naming</strong></td>
+<td><strong>Name printers geographically</strong> (by location/room), not themes like <em>decaf, latte, mocha</em>. Don't name after the <strong>group</strong> that uses it</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li class="case"><span class="tag">Case</span> <strong>Recommended Configurations Save SA Time</strong> — groups bought the right model but forgot the <strong>duplexer, cable, network kit</strong>.</li>
+<li class="case"><span class="tag">Case</span> <strong>An "Open" Cancellation Policy</strong> (Bell Labs) — peer pressure prevented abuse; <strong>first person to notice a runaway job could cancel it</strong>.</li>
+<li>Location naming pitfall: if the printer <strong>moves</strong>, everyone must reconfigure → use designated printer areas or floor + north/south names.</li>
+<li>UNIX two-part names: <strong>2t408-d</strong> (duplex) vs <strong>2t408-s</strong> (single-sided).</li>
+</ul>
+<h3>24.1.3 System Design</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Peer-to-peer</strong></th>
+<th><strong>Central funnel</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How</td>
+<td>All hosts spool <strong>directly to the printer</strong></td>
+<td>All hosts send jobs to a <strong>central server</strong> that distributes them</td>
+</tr>
+<tr>
+<td>Pros</td>
+<td><strong>Simplest to set up</strong> (just need printer IP/name); modern printers have reliable built-in spoolers</td>
+<td><strong>Higher control</strong>: format conversion (<strong>PostScript ↔ PCL</strong>), <strong>per-page billing</strong>, <strong>intelligent printer selection</strong> ("any color printer"); drivers updated in <strong>one place</strong></td>
+</tr>
+<tr>
+<td>Cons</td>
+<td><strong>Hardest to administer</strong>; changes must reach <strong>every client</strong>; hard to find who sent a <strong>rogue job</strong></td>
+<td><strong>Single point of failure</strong> → use savings for <strong>two redundant spoolers</strong> (manual or automatic failover)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Peer-to-peer chaos can be reduced with <strong>automated client updates</strong> (NIS, cfengine, <strong>LPRng</strong>).</li>
+<li><strong>Every added spooler increases admin work.</strong> Manual failover is OK if <strong>well documented and SAs are trained</strong>.</li>
+</ul>
+<h3>24.1.4 Documentation — three kinds for customers</h3>
+<ol>
+<li><strong>How-to-print document</strong> — menus/commands to connect and print (simplex, duplex, letterhead); rarely changes; in the getting-started manual.</li>
+<li><strong>List of printers</strong> — catalog of printers, <strong>locations, special features</strong>; updated whenever printers change; <strong>posted near every printer</strong>.</li>
+<li><strong>Printer label</strong> — on every printer showing its <strong>name(s)</strong>; label special trays. <strong>Users see this as the most important documentation.</strong></li>
+</ol>
+<p>Example: <strong>Google's http://print</strong> — printers by location with floorplan maps, setup instructions, queue view, ticket link.</p>
+<h3>24.1.5 Monitoring</h3>
+<p><strong>Nothing deserves the name <em>service</em> until it is monitored.</strong> Two aspects:</p>
+<ol>
+<li><strong>The spooling/print service</strong> — queue not stalled, spool disk not full or dead, logs recycled, CPU not overloaded.</li>
+<li><strong>Each printer's status</strong> — most speak <strong>SNMP</strong> to report <strong>jams, low toner, no paper</strong>. No automated way to know whether <strong>spare paper is near the printer</strong> → visit or deputize customers.</li>
+</ol>
+<p>Case: <strong>Print Tests</strong> — weekly Monday test page on every printer; an operator checked toner and restocked paper.</p>
+<h3>24.1.6 Environmental Issues</h3>
+<ul>
+<li><strong>Toner is toxic</strong>; printing kills trees and fills landfills. <strong>A page not printed has lower impact than one printed and recycled.</strong></li>
+<li><strong>Recycle toner cartridges</strong>; put <strong>recycling bins next to each trash can and printer</strong> (people recycle when it's easy). Coordinate with <strong>facilities</strong>.</li>
+<li>Give tools: <strong>preview tools</strong>, <strong>default to duplex</strong>, <strong>no burst (cover) pages</strong>, web-based paperless forms.</li>
+<li class="case"><span class="tag">Case</span> <strong>Creating a Recycling Program</strong> — company ignored vendor's cartridge-return incentive because <strong>nobody created a procedure</strong>. Lesson: <strong>"These things don't create themselves. Take the initiative."</strong></li>
+</ul>
+<h3>24.2 The Icing ("Rolls-Royce" service)</h3>
+<ul>
+<li><strong>Automatic Failover and Load Balancing:</strong> two spoolers each handle <strong>half the printers</strong> and substitute for each other. Failover = <strong>detection + cutover</strong>. Detection is hard (a spooler may answer pings yet not print); <strong>avoid false positives</strong>; tell <strong>server down vs printer down</strong> apart. Most problems are on the <strong>PC side (drivers, apps)</strong>.</li>
+<li><strong>Outsourced printing:</strong> for rare needs (binding, wide formats) send <strong>PDFs to a print shop</strong> — cheaper than a rarely used printer.</li>
+<li><strong>Dedicated Clerical Support:</strong> a <strong>clerk/operator</strong> visits printers, refills, arranges repairs — <strong>cheaper than an SA</strong>; give them exact <strong>toner order codes</strong>.</li>
+<li><strong>Shredding:</strong> shred anything you <strong>wouldn't want on the front page of the New York Times</strong>. <strong>On-site</strong> shredding (truck at your site) is preferred, with someone <strong>watching</strong>; spot-check <strong>off-site</strong> services. <strong>Not printing is more secure than shredding.</strong></li>
+<li><strong>Dealing with Printer Abuse:</strong> <strong>"You can't solve social problems using technology."</strong> Define abuse in the <strong>acceptable-use policy</strong>; per-page billing or <strong>free allotments</strong>; "top-ten printers" shaming backfired (people competed). Best: <strong>balanced, nontechnical approach</strong> — put printers in <strong>very visible public places</strong>; address real waste personally, don't be petty.</li>
+<li class="case"><span class="tag">Case</span> <strong>The 500-Page Printout</strong> (game cheats) — director emailed everyone asking the owner to <strong>pick it up from his office</strong>; never claimed; <strong>nothing more needed to be said</strong>.</li>
+</ul></div></section>
+<section class="chapter" id="ch27" data-title="Remote Access Service"><header class="ch-head"><div class="ch-num">Chapter 27</div><h2>Remote Access Service</h2><button class="done-btn" data-id="ch27">Mark reviewed</button></header><div class="ch-body"><p>A <strong>remote access service</strong> gives <strong>authorized individuals</strong> access to the company network from <strong>home, customer sites, or anywhere</strong>. It went from a niche for technical people to a <strong>core service everyone uses</strong> (telecommuters, road warriors).</p>
+<p><strong>Two main categories:</strong> (1) connect <strong>directly into the network</strong> (dial-up modems, ISDN); (2) connect <strong>to the Internet</strong> (WiFi, cable, DSL) then <strong>tunnel/VPN</strong> into the network. The chapter teaches <strong>how to evaluate</strong>, not which technology to pick (tech changes too fast).</p>
+<p>Basics in one line: <strong>understand requirements → agree on service levels → outsource as much as possible</strong>, but keep <strong>authentication, authorization, and perimeter security in-house</strong>.</p>
+<h3>27.1.1 Requirements for Remote Access</h3>
+<p><strong>Unstated first requirement: everyone must have a low-cost, convenient remote access solution.</strong> Otherwise customers <strong>build their own</strong> (less secure) and SAs end up supporting it anyway.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>User group</th>
+<th>Needs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Travelers</strong> checking email</td>
+<td><strong>Short</strong> connections from <strong>anywhere</strong> → technology must be <strong>ubiquitous</strong>; know the <strong>coverage area</strong> and cost model</td>
+</tr>
+<tr>
+<td><strong>Evening/weekend catch-up</strong> from home</td>
+<td>Short, <strong>reliable, economical</strong> connections</td>
+</tr>
+<tr>
+<td><strong>Regular work-from-home</strong></td>
+<td>(1) <strong>Reliable</strong> (outages hurt daily work), (2) <strong>high-speed</strong>, (3) different economics — 8–10 hrs/day, so <strong>always-on is cheaper than per-minute</strong></td>
+</tr>
+<tr>
+<td><strong>High-bandwidth Internet</strong> (home/conference)</td>
+<td><strong>Encryption</strong> required — unencrypted data on the Internet may count as <strong>publication (lose IP rights)</strong>; never send plaintext passwords. Server side usually at the <strong>corporate firewall</strong></td>
+</tr>
+<tr>
+<td><strong>At another company's site</strong> (consultants, support engineers)</td>
+<td><strong>Most difficult.</strong> Must obey the customer's rules; no always-on line (could <strong>bridge the two networks</strong>). Use an <strong>encrypted channel through the customer's firewall</strong> to the company firewall</td>
+</tr>
+</tbody>
+</table></div>
+<p>Because needs differ, a remote access service is usually <strong>several components</strong>.</p>
+<h3>27.1.2 Policy for Remote Access</h3>
+<p>Define <strong>before</strong> offering the service: <strong>acceptable use</strong>, <strong>security policies</strong>, <strong>responsibilities</strong> of users, <strong>who gets what access, and who pays</strong>.</p>
+<h3>27.1.3 Definition of Service Levels</h3>
+<ul>
+<li>Define service levels <strong>with customers</strong>; failures are highly visible because people can't work. Clear levels set expectations for <strong>ETR (estimated time to repair)</strong>.</li>
+<li><strong>Lone SA at a small site:</strong> negotiate levels that <strong>let her sleep</strong>. <strong>Large org with 24/7 helpdesk:</strong> more customer-oriented levels; train helpdesk on <strong>when to escalate</strong>.</li>
+<li><strong>Trial services and services being phased out</strong> get <strong>lower service levels</strong>; trial users need a <strong>backup access method</strong>.</li>
+<li class="case"><span class="tag">Case</span> <strong>Choose Customers for Trial Services Carefully</strong> — an ISDN trial was forced open to demanding engineers; one escalated an outage to top priority. Lesson: <strong>"Major bandwidth increases are addictive"</strong> — finish prototyping before early adopters get access; budget projects <strong>before they become political disasters</strong>.</li>
+</ul>
+<h3>27.1.4 Centralization</h3>
+<p>Remote access <strong>benefits from centralization</strong>: <strong>authentication must be centralized</strong> (auditing, access control); research costs on new tech shouldn't be duplicated; <strong>economies of scale</strong>. <strong>The ultimate form of centralization is outsourcing.</strong></p>
+<h3>27.1.5 Outsourcing</h3>
+<p><strong>Best way to handle constantly changing technology: get someone else (usually an ISP) to do it.</strong></p>
+<ul>
+<li>Benefits: much <strong>less support time</strong>; cost becomes <strong>visible and predictable</strong> (good for budgeting); fewer after-hours calls; <strong>no modem pool</strong> to support; vendor's evaluations are funded since it's their core business.</li>
+<li><strong>Never outsource the authentication database</strong> — keep it in-house for the <strong>exit process</strong>, <strong>auditing</strong>, and <strong>discreet sensitive terminations</strong>.</li>
+</ul>
+<p><strong>Vendor evaluation criteria (memorize):</strong></p>
+<ol>
+<li><strong>Coverage area</strong> — homes + travel areas; prefer global with option for smaller areas. "Fully covered" = <strong>local rates or free</strong> to call.</li>
+<li><strong>Supported technologies</strong> — and their <strong>rate of adoption</strong> (or customers build their own again).</li>
+<li><strong>First-level support</strong> — does the vendor provide it, or only via escalation from SAs?</li>
+<li><strong>Service-level agreement</strong> — get a <strong>written SLA</strong>: response times, nonperformance clauses, tracking, speed/latency.</li>
+<li><strong>Billing structure</strong> — ideally all costs in the vendor's charges (<strong>no expense reports</strong>); bill per department.</li>
+<li><strong>Authentication interface</strong> — standard protocols; <strong>company manages the auth database</strong>.</li>
+<li><strong>Security</strong> — <strong>company's security team is still responsible</strong>; check vendor's security architecture.</li>
+<li><strong>End-to-end bandwidth</strong> — estimate <strong>peak users × bandwidth each</strong>; VPN terminators need enough <strong>CPU</strong> (encryption is CPU-intensive).</li>
+</ol>
+<p>Choose carefully: <strong>changing remote access vendors is difficult</strong> (reconfigure every machine, new lines).</p>
+<h3>27.1.6 Authentication</h3>
+<ul>
+<li><strong>Always built and maintained in-house, even if everything else is outsourced.</strong></li>
+<li><strong>All remote access methods use the same authentication database</strong> (less overhead; none overlooked when disabling departed employees).</li>
+<li>Use <strong>one-time password / token-based</strong> systems, <strong>not reusable passwords</strong>. Small companies may start with passwords but should <strong>budget to switch</strong>.</li>
+</ul>
+<h3>27.1.7 Perimeter Security</h3>
+<ul>
+<li><strong>Remote access is part of the company's perimeter, even if outsourced.</strong> Misconfigured <strong>dynamic routing</strong> can create a <strong>back door</strong>.</li>
+<li class="case"><span class="tag">Case</span> <strong>Restrict Traffic and Routing Across Remote Access Links</strong> — a married couple working for <strong>competitors</strong>; both companies' home links routed through their home network, so <strong>Company B's mail for Company A crossed the couple's house</strong>. Fix: <strong>restrict routes</strong> and limit traffic to the <strong>one authorized host</strong>.</li>
+</ul>
+<h3>27.2 The Icing</h3>
+<ul>
+<li><strong>Home Office:</strong> remote access is <strong>only part of teleworking</strong>. Decide <strong>who provides and supports home equipment</strong> (home visits are expensive → specify in <strong>SLA</strong>, recover costs from the department). Home workers need <strong>phone, fax, print, conference calls</strong> — consider company-billed lines (expense reports are a <strong>hidden cost</strong>). Combat <strong>feeling out of touch</strong> with video conferencing and broadcasting meetings.</li>
+<li><strong>Cost Analysis and Reduction:</strong> costs are <strong>hidden from those who incur them</strong>. Move people from <strong>toll-free</strong> to <strong>local numbers</strong>; give heavy fixed-location users <strong>always-on</strong> links; <strong>automate</strong> notifications. Case: <strong>Lucent billing analysis</strong> — 1-800 number routed to nearest modem pool; a <strong>dynamic sign-on banner</strong> told callers the cheaper number; monthly emails showed money they could have saved; <strong>top 10% savers</strong> moved to VPN first.</li>
+<li><strong>New Technologies:</strong> supporting old + new tech raises costs; modems are <strong>backward-compatible</strong>, others aren't. <strong>Rule: support at most two technologies plus traditional modem dial-in.</strong> When adding a new one, <strong>aggressively phase out the older</strong> with a <strong>hard cutover date</strong>.</li>
+</ul>
+<p><strong>Conclusion:</strong> remote access is <strong>time-consuming and thankless</strong>; define policy, agree on service levels, <strong>outsource</strong>, keep <strong>authentication in-house</strong>, and <strong>limit the number of technologies</strong>.</p></div></section>
+<section class="chapter" id="ch28" data-title="Software Depot Service"><header class="ch-head"><div class="ch-num">Chapter 28</div><h2>Software Depot Service</h2><button class="done-btn" data-id="ch28">Mark reviewed</button></header><div class="ch-body"><p>A <strong>software depot</strong> is a way of <strong>making a large number of software packages available to many hosts</strong>. Without one, nontechnical users lack tools and technical users <strong>install their own, duplicating effort</strong>. <strong>A good depot makes the most anemic OS rich and useful</strong> — so much that users forget it isn't part of the vendor's OS (Case: <strong>We Forget How Bare Vendor Installations Can Be</strong> — <em>wget</em> on Solaris).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>UNIX depot</strong></th>
+<th><strong>Windows depot</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nature</td>
+<td>Software <strong>used in real time from the depot</strong></td>
+<td>Software <strong>to be installed</strong></td>
+</tr>
+<tr>
+<td>Typical form</td>
+<td>Shared file server mounted at e.g. <strong>/sw</strong> or <strong>/opt/net</strong>, add to <strong>$PATH</strong>; export <strong>read-only</strong></td>
+<td>(1) <strong>network disk</strong> with software that runs from it; (2) <strong>software push system</strong> (e.g., <strong>MS-SMS</strong>); (3) <strong>distribution server</strong> of .ZIP/.EXE packages for manual install</td>
+</tr>
+<tr>
+<td>Why</td>
+<td>Installs are complex, need <strong>root</strong>; one team builds for all hosts</td>
+<td><strong>Registry settings</strong> must be set by an installer</td>
+</tr>
+</tbody>
+</table></div>
+<h3>28.1.1 Understand the Justification</h3>
+<ul>
+<li>A depot is a <strong>customer service that finds, installs, and maintains a library of software</strong>; depot maintainers are <strong>librarians</strong>.</li>
+<li>Benefits: <strong>reduces duplication of effort</strong>, saves searching, acts as a <strong>bandwidth cache</strong>, <strong>consolidates purchases</strong>, <strong>leverages installation expertise</strong>, ensures <strong>security/bug-fix updates</strong> reach everyone.</li>
+<li><strong>Consistency</strong> → machines become <strong>interchangeable</strong> (choose hosts by hardware, not by installed software).</li>
+<li><strong>Even small sites need a consistent software layout</strong> (otherwise a "rat's nest"). Warning signs you need a real depot: <strong>micromanaging the software library, duplicating builds, inconsistent packages</strong>.</li>
+</ul>
+<h3>28.1.2 Understand the Technical Expectations</h3>
+<p>Base the depot on <strong>users' requirements</strong> (may need <strong>multiple versions</strong> of a tool at once). Consider <strong>reliability</strong>: local files vs remote server; use <strong>replication or RAID</strong> for higher availability.</p>
+<h3>28.1.3 Set the Policy</h3>
+<p>Letting anyone contribute is dangerous (<strong>Trojan horse</strong> = malicious program with the same name as another program; accidental incompatible upgrades). The policy answers:</p>
+<ul>
+<li><strong>Who may build and install packages?</strong></li>
+<li><strong>What if the maintainer leaves?</strong></li>
+<li><strong>Which OSs are supported?</strong> (One depot for all with <strong>wrapper scripts</strong> — a script that <strong>detects the platform and calls the right binary</strong> — or one per OS?)</li>
+<li>Is there a <strong>standard wrapper template</strong>?</li>
+<li><strong>How are upgrades, bugs, and deletions handled?</strong></li>
+<li><strong>Scope of distribution</strong> — cluster, department, enterprise?</li>
+<li><strong>How do customers request packages?</strong> (depot committee?)</li>
+</ul>
+<p><strong>Publish the policy where customers will see it.</strong></p>
+<h3>28.1.4 Select Depot Software</h3>
+<ul>
+<li><strong>UNIX: select an existing depot system; don't write one from scratch</strong> (customizing is easier). Examples: <strong>Depot</strong> (seminal), <strong>LUDE, Modules, SEPP</strong>, <strong>GNU Stow</strong> (manages symbolic links).</li>
+<li><strong>Windows:</strong> a network share, FTP server, or website.</li>
+<li>If a <strong>legacy repository</strong> exists, decide whether to augment or replace it.</li>
+</ul>
+<h3>28.1.5 Create the Process Manual</h3>
+<p>Document the <strong>local procedure for adding packages</strong> (with local hostnames etc.). Later write a short <strong>quick guide</strong> with <strong>cut-and-paste commands</strong> so experienced SAs don't skip steps.</p>
+<h3>28.1.6 Examples</h3>
+<p><strong>UNIX example (/sw depot):</strong></p>
+<ul>
+<li>Build on a <strong>documented build machine</strong> per OS; source in <strong>/home/src/\<package></strong>; a <strong>SOURCEME</strong> script sets up the build environment (promotes <strong>institutional learning</strong>).</li>
+<li>Install in <strong>versioned directories</strong>: <strong>/sw/perl-6.0</strong>, <strong>/sw/perl-6.1</strong> → supports <strong>multiple versions</strong>.</li>
+<li><strong>/sw/perl</strong> = <strong>symbolic link to the latest supported release</strong>. Test a new version by <strong>not updating the link</strong> until it's certified; running processes keep using the old version.</li>
+<li><strong>/sw/default/bin</strong> = links to popular programs → users add <strong>one directory to PATH</strong>. <strong>GNU Stow</strong> creates minimal links.</li>
+<li>Networked via <strong>NFS + automounter</strong> maps per OS (e.g., Solaris 8 on <em>bester</em>, Solaris 9 on <em>lyta</em>); <strong>obsolete packages are not carried forward</strong> to a new OS unless requested. Keep <strong>current + one previous OS release</strong> actively maintained.</li>
+<li>Automate with a <strong>master file + make</strong> that generates automounter maps and Stow commands (humans are bad at keeping things in sync).</li>
+<li>Delete conservatively: <strong>rename first, delete after about a week</strong>, announce it. Disk use is <strong>self-limiting</strong> as old OSs retire.</li>
+<li>Packages <strong>read-only</strong> to non-privileged users. Customers hand software to an SA (archives source centrally).</li>
+<li><strong>/sw/contrib</strong> = area where <strong>customers install and share their own software</strong>; owner is responsible; <strong>don't put /sw/contrib in PATH</strong> — link from <strong>$HOME/bin</strong>; rules in <strong>/sw/contrib/POLICY</strong>.</li>
+<li>The book <strong>prefers no wrappers</strong> — they're a <strong>slippery slope</strong>.</li>
+<li>System is <strong>self-documenting</strong> (master file + layout).</li>
+</ul>
+<p><strong>Windows example (\\server1\software share)</strong> with a <strong>POLICY</strong> document and directories:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Directory</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Standard</strong></td>
+<td>Approved for all machines but <strong>not installed by default</strong>; first place to look</td>
+</tr>
+<tr>
+<td><strong>Preinstalled</strong></td>
+<td>Already on new PCs / pushed by MS-SMS; kept for <strong>reinstalls</strong></td>
+</tr>
+<tr>
+<td><strong>Disk images</strong></td>
+<td>CD/DVD images licensed or freely distributable (e.g., Linux ISOs); saves Internet bandwidth</td>
+</tr>
+<tr>
+<td><strong>Experimental</strong></td>
+<td><strong>Not yet approved</strong>, under evaluation; ACL/password restricted</td>
+</tr>
+<tr>
+<td><strong>Admin</strong></td>
+<td>SA-only tools and <strong>specially licensed software</strong>; SA installs to enforce licenses</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Also an <strong>Obsolete</strong> directory; <strong>one directory per package</strong> with clear names; a <strong>.txt notes file</strong> per directory (license, install tips).</li>
+<li>Windows depots are <strong>light on the network</strong> (install once), so often <strong>not replicated</strong> — just put on a well-connected server. <strong>Slow NFS to a UNIX depot destroys productivity.</strong></li>
+</ul>
+<h3>28.2 The Icing</h3>
+<ul>
+<li><strong>Different Configurations for Different Hosts:</strong> config file in depot is a symlink to a local file (e.g., /etc/megasoft.conf) which may link back to standard configs in the depot → <strong>bounce links</strong>.</li>
+<li><strong>Local Replication:</strong> cache popular packages on local disk (less network, faster) — hard to track manually. <strong>"Better the right thing happen slowly than the wrong thing with excellent performance."</strong> Affects <strong>backup policy</strong>. Best general solution: an <strong>NFS cache</strong> (e.g., Solaris <strong>cachefs</strong>) — adaptive, <strong>set-it-and-forget-it</strong>.</li>
+<li><strong>Commercial Software in the Depot:</strong> site license → include normally; software that checks a <strong>license server</strong> → make available to all. Otherwise <strong>SA must enforce the license</strong> (SA installs, install on licensed host only, or a <strong>UNIX group</strong> with execute permission). Different license servers per group → <strong>bounce links</strong>.</li>
+<li><strong>Second-Class Citizens:</strong> off-beat OSs with <strong>minimal support</strong> (maybe just an IP address). Give them a <strong>minimal depot</strong> — tools for the <strong>machine's purpose</strong> (e.g., compiler <strong>tool chain</strong>), <strong>SA process tools</strong> (inventory, log rotation, backups, debugging), and a few <strong>convenience tools</strong>. <strong>Don't provide every package.</strong> Have a <strong>written policy</strong> on support level. <strong>Tool chain</strong> = software needed to build software (make, compilers, assemblers, linkers, debuggers, source control) — one tool leads to the next.</li>
+</ul></div></section>
+<section class="chapter" id="ch29" data-title="Web Services"><header class="ch-head"><div class="ch-num">Chapter 29</div><h2>Web Services</h2><button class="done-btn" data-id="ch29">Mark reviewed</button></header><div class="ch-body"><p>A <strong>web site</strong> presents information and applications using a <strong>client/server model</strong>; the client is a <strong>browser</strong> (any program speaking <strong>HTTP</strong>). The server delivers <strong>pages</strong> in <strong>HTML</strong> plus embedded content; some content (e.g., <strong>JavaScript</strong>) runs in the browser.</p>
+<ul>
+<li>The web is built on <strong>open standards</strong> — <strong>W3C</strong> defines web standards, <strong>IETF</strong> defines Internet protocols; no royalties.</li>
+<li><strong>The web browser is a universal client</strong> — new services need <strong>no new client software</strong>.</li>
+<li class="case"><span class="tag">Case</span> <strong>The Power of Open Standards</strong> — <strong>Network Notes</strong> (AT&amp;T, Lotus, Novell) failed: proprietary software, no sites, no users. Lock-in <strong>locks potential customers out</strong>.</li>
+</ul>
+<h3>29.1.1 Web Service Building Blocks</h3>
+<ul>
+<li><strong>URL (uniform resource locator)</strong> = address of information on the web (hostname + path).</li>
+<li><strong>Web server</strong> = receives HTTP requests and replies with data (<strong>Apache, AOLServer, Microsoft IIS</strong>).</li>
+<li><strong>CGI (Common Gateway Interface)</strong> = generates <strong>dynamic content on demand</strong> (often from a database).</li>
+<li><strong>GET = read-only</strong> (inputs in the URL). <strong>POST = update/mutation</strong> (inputs inside the request; can be longer). Search engines <strong>don't follow POSTs</strong> — famous bug: a DELETE button made as a GET → <strong>web crawler deleted all data</strong>.</li>
+<li><strong>In-line interpreted code:</strong> <strong>PHP</strong>, Microsoft <strong>ASP</strong>.</li>
+<li><strong>AJAX = Asynchronous JavaScript and XML</strong> — a <strong>technique (not a protocol)</strong> for interactive pages; contacts the server only when needed.</li>
+<li>Formats: HTML/XHTML/XML; <strong>streaming</strong> for real-time audio/video; <strong>RSS feed</strong> = an XML <strong>microformat</strong> listing a site's table of contents.</li>
+</ul>
+<p><strong>HTTP status codes</strong> (1xx info, 2xx success, 3xx redirect, 4xx error):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK — request completed</td>
+</tr>
+<tr>
+<td><strong>301</strong></td>
+<td><strong>Moved permanently</strong> (remember the new URL)</td>
+</tr>
+<tr>
+<td><strong>302</strong></td>
+<td>Redirect to specified URL</td>
+</tr>
+<tr>
+<td><strong>307</strong></td>
+<td>Redirect <strong>temporarily</strong></td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td>Try again <strong>with authentication</strong> (browser first requests without auth, gets 401, then resends with credentials)</td>
+</tr>
+<tr>
+<td><strong>403</strong></td>
+<td>Unauthorized / wrong password / forbidden</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td><strong>No such page found</strong> (returns an error page, can be customized)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>29.1.2 The Webmaster Role</h3>
+<ul>
+<li><strong>Webmaster = manages the <em>content</em></strong> of a web site (like a newspaper editor) and sets <strong>web site policy</strong>.</li>
+<li><strong>Web system administrator = maintains the technical machinery</strong> (server, software).</li>
+<li>Often confused (same person at small sites). Reinforce the difference: different <strong>departments or budgets</strong>.</li>
+<li>If forced into webmaster duty: <strong>enable self-service updates</strong>; get an <strong>SLA for update requests</strong> (e.g., major updates Monday, minor within 8 hours, emergency process).</li>
+</ul>
+<h3>29.1.3 Service-Level Agreements</h3>
+<ul>
+<li>Web services need an <strong>SLA + monitoring</strong>. Most <strong>internal</strong> web services share the SLA of other office services (printing, storage). <strong>Set the SLA with customers.</strong></li>
+<li><strong>Resist SLAs with no room for maintenance unless redundant.</strong></li>
+<li>Key metric: <strong>latency at a given QPS (queries per second)</strong> — measured from <strong>first byte of the request to last byte of the answer</strong>.</li>
+</ul>
+<h3>29.1.4 Web Service Architectures</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Key resource at high QPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Static web server</strong></td>
+<td>Serves documents that <strong>don't change</strong>, read straight from disk, out of the <strong>document root</strong></td>
+<td><strong>RAM</strong> (to cache common files)</td>
+</tr>
+<tr>
+<td><strong>CGI server</strong></td>
+<td>Generates pages <strong>dynamically</strong>; serves fewer pages/sec</td>
+<td><strong>CPU</strong></td>
+</tr>
+<tr>
+<td><strong>Database-driven site</strong></td>
+<td>Uses <strong>templates</strong> filled from a database (e.g., bookstore catalog); global change = edit the template. <strong>Encourage sites to move to this model early</strong></td>
+<td>Scale like any <strong>database</strong></td>
+</tr>
+<tr>
+<td><strong>Multimedia server</strong></td>
+<td>Large media files, <strong>streaming</strong> (non-HTTP protocol), <strong>DRM</strong>, rate control, buffering</td>
+<td><strong>Storage, network bandwidth, memory, CPU</strong> (real-time re-encoding → special hardware cards)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>LAMP</strong> = <strong>Linux, Apache, MySQL, Perl/PHP/Python</strong> — naming platforms reduces confusion.</li>
+<li><strong>Multiple servers on one host:</strong> (1) <strong>different port</strong> (e.g., :8001) — users forget the port; (2) <strong>multiple IP addresses / virtual interfaces (VIFs)</strong> per group — more work up front but <strong>scales nicely</strong> (move a group's IP to another host).</li>
+</ul>
+<h3>29.1.5 Monitoring</h3>
+<p>Use Chapter 22 methods plus web-specific items: <strong>web server errors</strong> (content/script problems or <strong>intrusion attempts</strong>), <strong>browser client type</strong>, <strong>referring URL</strong>, active threads/memory.</p>
+<h3>29.1.6 Scaling for Web Services</h3>
+<p><strong>"Scaling is the only problem on the Internet. Everything else is a sub-problem."</strong> — Mike O'Dell (UUNET). <strong>"Slashdot effect"</strong> = a site mentioned on a popular site gets overloaded.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Horizontal scaling</strong></th>
+<th><strong>Vertical scaling</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Meaning</td>
+<td><strong>Replicate</strong> a resource and <strong>divide the load</strong> (e.g., 2 identical web servers)</td>
+<td><strong>Separate subservices</strong> onto different machines; more resources at the busiest stages</td>
+</tr>
+<tr>
+<td>How</td>
+<td><strong>Round-robin DNS</strong> (drawbacks: clients <strong>cache IPs</strong>, keeps giving out a <strong>dead server</strong>) or better a <strong>hardware load balancer</strong> (tracks down servers, routes to least busy)</td>
+<td>e.g., move <strong>video clips</strong> to their own server so the <strong>survey database</strong> isn't competing</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Strata's case: load balancer timed out idle LDAP connections <strong>without a TCP FIN</strong> → mysterious failures.</li>
+<li><strong>Choosing a method:</strong> classify components by the <strong>resources they use most</strong>; <strong>fix the most overloaded component first, one at a time</strong> (easier testing and budgeting).</li>
+<li><strong>Scaling challenges:</strong> <strong>state</strong> (keep in browser or shared; modern load balancers track sessions; <strong>NAT</strong> complicates it); replace CGI <strong>lock files</strong> with a <strong>database</strong>; split databases into <strong>read-only (replicated)</strong> and <strong>read-write</strong> views.</li>
+<li class="case"><span class="tag">Case</span> <strong>The Importance of Scaling</strong> — <strong>Florida Election Board</strong> site overloaded in <strong>2000</strong> election; whole department lost Internet.</li>
+<li><strong>Typical progression:</strong> static + dynamic + database on one machine → <strong>each on its own machine</strong> → scale each individually (static on NFS/SAN; dedicated dynamic servers; separate databases).</li>
+</ul>
+<h3>29.1.7 Web Service Security</h3>
+<p>Intruders often don't deface — they <strong>use your resources</strong>: <strong>warez</strong>, <strong>spam</strong>, attacking others, <strong>bot farms</strong>. <strong>Even internal web services must be secured</strong> (viruses, HR/finance data, visitors, compromised networks, accidental DoS). <strong>Most important: stay up to date on new threats.</strong></p>
+<p><strong>Secure connections and certificates</strong></p>
+<ul>
+<li><strong>HTTPS = HTTP over SSL</strong>; prevents eavesdropping (e.g., coffee-shop WiFi).</li>
+<li>Certificate has a <strong>public half</strong> (given to anyone) and <strong>private half</strong> (must stay secret — leaked = others can <strong>impersonate your site</strong>). Keep a <strong>key escrow</strong> (e.g., USB key in a safe).</li>
+<li>Storing the private key on the web server is risky → store it <strong>encrypted</strong>, requiring a <strong>password at every restart</strong> (or an obfuscated password + protected helper program).</li>
+<li><strong>Self-signed certificate</strong> (e.g., made with <strong>OpenSSL</strong>) encrypts but <strong>can't prove identity</strong> → browser warning. <strong>CA (certification authority)-signed</strong> certificate proves the site is genuine; <strong>hierarchy of trust</strong> CA → your cert → browser.</li>
+<li><strong>Crypto is CPU-intensive</strong> (500 plain QPS vs ~100 SSL QPS) → <strong>SSL accelerators</strong>; fine as long as the server is <strong>network-bound before CPU-bound</strong>.</li>
+</ul>
+<p><strong>Protecting the content — common attacks</strong></p>
+<ul>
+<li><strong>Directory traversal</strong> — requesting files outside the document root (e.g., <strong>../../../some-file</strong>).</li>
+<li><strong>Form-field corruption</strong> — altering a copied web form (e.g., changing a <strong>hidden price field</strong>, even to negative). Store a <strong>product ID</strong> and look up the price server-side.</li>
+<li><strong>SQL injection</strong> — a variant of form-field corruption: input that makes SQL <strong>always true</strong> or runs arbitrary queries/commands.</li>
+</ul>
+<p><strong>Application security disciplines</strong></p>
+<ol>
+<li><strong>Limit the potential damage</strong> — <strong>golden master</strong> copy internally; isolate the web server; connections <strong>initiated from inside only</strong>.</li>
+<li><strong>Validate input</strong> — check <strong>length</strong> (buffer overflows); <strong>validate by inclusion, not exclusion</strong> (allow only a set of characters — don't block O'Brien's apostrophe).</li>
+<li><strong>Automate data access</strong> — <strong>read-only</strong> DB access when possible; <strong>stored procedures</strong>; prepared statements.</li>
+<li><strong>Use permissions and privileges</strong> — <strong>least privilege</strong>; <strong>XSRF</strong> is an example of misused permissions.</li>
+<li><strong>Use logging</strong> — <strong>protection of last resort</strong>; store logs <strong>off-machine or in nonstandard places</strong> (network logging to a central log host).</li>
+</ol>
+<h3>29.1.8 Content Management</h3>
+<ul>
+<li><strong>SAs should not do content updates</strong> — it creates a <strong>bottleneck</strong> and the problem grows (no incentive to hire a webmaster).</li>
+<li><strong>Web team:</strong> content management belongs to <strong>the people who create content</strong> (sales, marketing, PR). Best: a <strong>web team</strong> serving internal + external sites. Smaller orgs: a <strong>web council</strong> = webmaster + representative from each stakeholder group (incl. systems staff).</li>
+<li class="case"><span class="tag">Case</span> <strong>Will They Really Read It This Weekend?</strong> — Friday "urgent" marketing updates. Fix: start a <strong>web council</strong> → <strong>visibility</strong> → support for hiring a webmaster.</li>
+<li><strong>Change control</strong> (owned by the web council) distinguishes three alterations:<ul>
+<li><strong>Update</strong> = <strong>add new material</strong> or replace with a newer version</li>
+<li><strong>Change</strong> = alter <strong>site structure</strong> (new directory, redirect links)</li>
+<li><strong>Fix</strong> = <strong>correct</strong> content or behavior that doesn't meet standards (needs a ticket + QA)</li>
+</ul>
+</li>
+<li class="case"><span class="tag">Case</span> <strong>Policy + Automation = Less Politics</strong> — Tom set up <strong>www-draft → www-qa → www (live)</strong>, then <strong>self-service push scripts with sudo</strong> to take SAs <strong>out of the updates and the politics</strong>.</li>
+</ul>
+<h3>29.1.9 Building the Manageable Generic Web Server</h3>
+<p><strong>Questions to ask the requester:</strong> internal or Internet? for a specific application? who uses it? <strong>uptime requirements</strong> (maintenance window)? accounts/groups? <strong>storage</strong>? <strong>expected traffic and growth</strong>?</p>
+<ul>
+<li><strong>Any site:</strong> <strong>plan the URL namespace</strong> (e.g., /cgi-bin, /images, /user/$USER); avoid <strong>ID numbers</strong> in URLs (confidential). A shared URL is expected to <strong>last forever</strong> → use <strong>redirects</strong>. Separate <strong>config includes</strong> per section so web teams can't break sitewide settings. <strong>Don't let people run their own CGIs by default</strong> (set resource limits if you must). Let requesters <strong>update their own content</strong>; ideally <strong>database-driven</strong>.</li>
+<li><strong>Internal (intranet) site:</strong> shared document root, each group gets <strong>read/write on its own subdirectory</strong>; groups that modify the server itself get a <strong>separate (virtual) server</strong>.</li>
+<li><strong>External site:</strong> good security (block unused ports, firewall). <strong>Four independent pieces: domain registration, Internet DNS hosting, web hosting, web content.</strong></li>
+<li><strong>Web production process:</strong> three identical servers — <strong>draft → QA → live (production)</strong>. Optional <strong>golden master</strong> server: identical to production but <strong>hidden/internal</strong>, for <strong>auditing and integration testing</strong>.</li>
+</ul>
+<h3>29.2 The Icing</h3>
+<ul>
+<li><strong>Third-Party Web Hosting:</strong> a company provides web servers; <strong>managed hosting</strong> adds services like <strong>monitoring</strong>.<ul>
+<li><strong>Advantages:</strong> <strong>"Integration is more powerful than invention"</strong>; no local install; <strong>dashboard</strong>; often <strong>better reliability and security</strong> than you can provide (<strong>economies of scale</strong>); helps <strong>disaster recovery</strong> and scaling; best for <strong>small sites</strong> ($5/month and up).</li>
+<li><strong>Disadvantages:</strong> <strong>worrying about the data</strong> (mitigated by exports/hosted backups), <strong>difficulty letting go</strong>, fear that <strong>outsourcing hosting leads to outsourcing the SA</strong>.</li>
+</ul>
+</li>
+<li><strong>Unified Login / Managing Profiles:</strong> one password system for all apps (too many passwords → <strong>sticky notes on monitors</strong>). <strong>Profile = login/password + access/customization info.</strong> Methods: <strong>.htaccess/.htpasswd, LDAP/Active Directory, PAM, SQL lookups</strong>. <strong>Choose products that integrate with your authentication system</strong>; ideally the app uses the <strong>pre-authenticated username</strong> from the web server.</li>
+<li><strong>Mashup Applications:</strong> a <strong>web site that uses data and APIs from other sites to make a new application</strong> (e.g., <strong>HousingMaps</strong> = Google Maps + Craigslist). Two parts to scale: the <strong>glue</strong> and the <strong>services used</strong>. Good APIs use <strong>registration keys with rate limits</strong> (QPS and daily max) stated in an <strong>SLA</strong>. Exceeding limits = <strong>abuse or unexpected success</strong> — smart companies <strong>don't assume abuse</strong>. A mashup shows <strong>you have valuable data</strong>; consult <strong>legal and marketing</strong> before blocking.</li>
+</ul></div></section>
+<section class="chapter" id="ch31" data-title="Perception and Visibility"><header class="ch-head"><div class="ch-num">Chapter 31</div><h2>Perception and Visibility</h2><button class="done-btn" data-id="ch31">Mark reviewed</button></header><div class="ch-body"><p>Good system administration is like <strong>good theater</strong>: the audience sees the show, not the backstage work, but <strong>values it more when it understands what went into it</strong>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th><strong>Perception</strong></th>
+<th><strong>Visibility</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>How people see you</strong></td>
+<td><strong>How much people see of you</strong></td>
+</tr>
+<tr>
+<td>A measure of <strong>quality</strong></td>
+<td>A measure of <strong>quantity</strong></td>
+</tr>
+<tr>
+<td>Covered in <strong>The Basics</strong></td>
+<td>Covered in <strong>The Icing</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Customers' perceptions of you are their reality of you.</strong> If they don't know you exist, you don't exist; with a <strong>vacuum of information, they assume the worst</strong>.</li>
+<li>Doing the technical work well is <strong>not enough</strong> to be perceived well.</li>
+<li><strong>You are responsible for how you are perceived — nobody else will do it for you.</strong></li>
+</ul>
+<h3>31.1.1 A Good First Impression</h3>
+<ul>
+<li><strong>The first impression dominates all future interactions.</strong> Bad start = "the bad kid" all year; good start = occasional mistakes seen as a fluke.</li>
+<li><strong>Goodwill bank account:</strong> every good deed is a deposit; you can survive about <strong>one bad thing for every five good things</strong>.</li>
+<li>At appointments: <strong>be on time, polite, friendly, willing to listen; smile</strong>. Dress appropriately <strong>for your company's culture</strong> (Case: <strong>Chromatically Different Hair</strong> — pink hair made customers assume she was technically excellent). Case: <strong>The First Time I Met You</strong> — "<strong>First impressions are lasting impressions.</strong>"</li>
+<li><strong>Unruffled exterior</strong> is the SA's greatest asset. <strong>Don't yell</strong> — if about to, <strong>excuse yourself to the restroom</strong>.</li>
+<li><strong>New hires</strong> will eventually be most of your customers: have their <strong>computer, accounts, and everything working on day one</strong>; a productive first day keeps motivation high.</li>
+<li class="case"><span class="tag">Case</span> <strong>S-l-o-w PC Delivery</strong> — a programmer had <strong>no computer for a month</strong> and coworkers thought it normal.</li>
+<li class="case"><span class="tag">Case</span> <strong>PC Delivery at NYIT</strong> — new PCs arrive on a cart with <strong>jingle bells</strong>; crowd gathers, applause → <strong>positive visibility</strong>.</li>
+<li>Get computing needs on the <strong>secretaries' new-hire checklist</strong> (computer, network jack, login name, mailing lists, software, accounts).</li>
+<li>On day one, the <strong>friendliest SA</strong> gives an <strong>in-person orientation</strong> and a printed <strong>"welcome to our network" guide</strong> — <strong>puts a face on the SA team</strong> (customers don't like faceless organizations).</li>
+<li class="case"><span class="tag">Case</span> <strong>Orientation Sessions</strong> — if SAs don't orient new hires, <strong>someone else will</strong> (and may bad-mouth the SAs).</li>
+</ul>
+<h3>31.1.2 Attitude, Perception, and Customers</h3>
+<ul>
+<li><strong>People perceive you by the attitude you project.</strong></li>
+<li><strong>Number-one SA attitude problem: blatant disrespect for the people they serve</strong> ("lusers," "pests with requests"). They are <strong>the reason SAs have jobs</strong>; SAs and users are <strong>on the same team</strong>.</li>
+<li><strong>Call them "customers," not "users"</strong> (Smallwood 1992) — reminds SAs they are in a <strong>service industry</strong>. Working as a <strong>consultant</strong> teaches this.</li>
+<li>But <strong>"the customer is always right" goes too far</strong> — SAs must <strong>politely say no</strong> when appropriate and reject requests <strong>against policy</strong>. <strong>"Just because I can do it doesn't mean I should."</strong> <strong>Help customers help themselves.</strong></li>
+<li>Higher roles (architect) → a <strong>"business partners"</strong> relationship with a <strong>scope of work</strong>.</li>
+<li>Treat every problem as a <strong>fun puzzle</strong>, not a burden. "Users are stupid"? They <strong>know more about their own field</strong> than you.</li>
+<li class="case"><span class="tag">Case</span> <strong>Venting About Customers</strong> — SA called customers "idiots" in the cafeteria with <strong>their director at the next table</strong>; he was removed. <strong>Vent privately to your manager</strong>; email can be forwarded.</li>
+<li>End ticket replies with <strong>sincere thanks for reporting the problem</strong>.</li>
+</ul>
+<h3>31.1.3 Priorities Aligned with Customer Expectations</h3>
+<ul>
+<li>Customers judge efficiency <strong>not by how hard you work but by how soon their requests are completed</strong>.</li>
+<li><strong>Customers expect small things done quickly and big things in reasonable time</strong> — by <strong>their</strong> definition of big/small.</li>
+<li><strong>Priority order: (1) emergencies, (2) quick requests, (3) longer requests.</strong> Same work, different order → <strong>delighted customers</strong>. Don't let big jobs be <strong>postponed endlessly</strong>.</li>
+<li><strong>Password resets</strong> are urgent due to the <strong>domino effect</strong> (can't log in = can't work).</li>
+<li>Make quick requests <strong>self-serve</strong> (web password reset, <strong>DHCP</strong>, a tear-off pad of IP addresses, <strong>toner kept near the printer</strong>).</li>
+<li>Organization-wide: <strong>front-line</strong> handles quick requests, <strong>second tier</strong> longer ones, <strong>senior SAs</strong> projects.</li>
+<li>Two-SA teams: <strong>mutual-interruption shield</strong> — one SA shields the other in the morning, and vice versa in the afternoon.</li>
+</ul>
+<h3>31.1.4 The System Advocate</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th><strong>System clerk</strong></th>
+<th><strong>System advocate</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reactive</strong></td>
+<td><strong>Proactive</strong></td>
+</tr>
+<tr>
+<td>Told what to do on a schedule; not involved in planning</td>
+<td><strong>Advocates customers' needs to management</strong>; involved in <strong>planning</strong></td>
+</tr>
+<tr>
+<td>Does clerical tasks manually (backups, accounts)</td>
+<td><strong>Automates clerical tasks</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Becoming an advocate is a <strong>slow evolution that starts with one proactive project</strong> (time now, savings later).</li>
+<li>Benefits: aligns with customers; builds a <strong>can-do reputation</strong> → <strong>promotions and raises</strong>.</li>
+<li>Clerks are where SAs <strong>start and learn</strong>; better to be <strong>managed by SAs than by customers</strong>.</li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li><strong>Installing software:</strong> clerk gets the media late, hits license/disk problems, takes weeks. Advocate is <strong>involved from the start</strong>, does <strong>capacity planning</strong>, agrees a <strong>timetable</strong>. <strong>"People value what they understand and devalue what they don't."</strong></li>
+<li><strong>Solving a performance problem:</strong> clerk just installs a <strong>faster network card</strong> (can make it worse — floods the server). Advocate <strong>diagnoses</strong>, explains options, and lets the <strong>customer present the proposal to management</strong>.</li>
+<li><strong>Simple automation:</strong> clerk batches account creation weekly; advocate <strong>automates it</strong>. <strong>Automate the 80%</strong> and document special cases. A script can <strong>output the commands</strong> for review. Automation also <strong>prevents errors</strong>.</li>
+<li><strong>Automating anything:</strong> <strong>first do the entire process manually, record the steps, then automate those exact steps</strong>; <strong>test each step separately</strong> as you go.</li>
+</ul>
+<h3>31.2 The Icing — Increasing Visibility</h3>
+<p><strong>SA visibility paradox: SAs are noticed only when something breaks.</strong> 100% uptime makes management think SAs aren't needed. Don't keep systems unstable — show your value subtly. <strong>Nobody will promote you except yourself.</strong> <strong>Visibility only works if you already do good work — no point advertising a bad product.</strong></p>
+<ul>
+<li><strong>System Status Web Page:</strong> current status, <strong>time/date stamped</strong>, how to report problems, monitoring links, <strong>planned outages</strong>, recent changes. Make it the <strong>default browser page</strong> with useful content (weather, news). Shows <strong>you care</strong> and <strong>reduces redundant calls</strong> ("Server sinclair is down; we're working on it"). Must be <strong>updated consistently</strong>. Low-tech alternative: a <strong>whiteboard</strong> at the machine room (+ webcam).</li>
+<li><strong>Management Meetings:</strong> <strong>30 minutes every 2 weeks</strong> with each customer group's manager — shows projects, lets them <strong>prioritize</strong>, and educates them on <strong>invisible infrastructure work</strong>.</li>
+<li><strong>Physical Visibility:</strong> hidden office = inaccessible; fully visible = every break looks like slacking. <strong>Customer-facing SAs in visible spots; back-office architects less visible.</strong> Cases: <strong>Office Location</strong> (Bell Labs) and <strong>Desk Location</strong> (Cibernet London — customers reached the <strong>senior SA first</strong>; Tom rearranged seating).</li>
+<li><strong>Town Hall Meetings:</strong> yearly <strong>"state of the network"</strong>; different area heads present; <strong>plan and script</strong> it. <strong>User group meetings</strong> (monthly/quarterly) = <strong>half entertainment, half feedback</strong>. Sample agenda: <strong>Welcome (2 min) → Introductions (5) → Feedback (20) → Review (10) → Show and tell (30) → Meeting review (5) → Closing (2)</strong>. During feedback: ask <strong>open-ended questions</strong>, write <strong>key phrases on an easel pad</strong>, <strong>don't reject or explain away requests</strong> (people must feel safe), don't let one person dominate. Close by <strong>thanking people</strong>.</li>
+<li><strong>Newsletters:</strong> <strong>mostly ignored</strong> or seen as <strong>PR over problem-solving</strong>; if you must, keep it <strong>simple and useful</strong> (FAQ, "ask the SAs"). <strong>If you hired a full-time person for it, it's not simple.</strong></li>
+<li><strong>Mail to All Customers:</strong> before major changes; <strong>brief; most important info in the first sentence</strong> (most read only the subject + first line). Put <strong>"ACTION REQUIRED"</strong> in the subject when needed. Include <strong>two different contact methods</strong> (e.g., email + phone). Use <strong>only occasionally</strong>. Google: start by saying <strong>who doesn't need to read it</strong>. Les Lloyd used his <strong>email signature</strong> to promote services.</li>
+<li><strong>Lunch:</strong> eat with different customers regularly. Case: <strong>Free Lunch</strong> — Tommy Reingold takes the creator of <strong>every 10,000th ticket</strong> to lunch.</li>
+</ul>
+<p><strong>Conclusion:</strong> <strong>Don't leave perception and visibility to fate</strong> — unmanaged, they will be a disaster.</p></div></section>
+<section class="chapter" id="ch32" data-title="Being Happy"><header class="ch-head"><div class="ch-num">Chapter 32</div><h2>Being Happy</h2><button class="done-btn" data-id="ch32">Mark reviewed</button></header><div class="ch-body"><p>A <strong>happy SA</strong> handles stress and an endless workload, looks forward to work, has good relationships with customers, coworkers, and managers, feels <strong>in control</strong>, and has a good social/family life. Happy SAs share <strong>habits</strong>: <strong>good personal skills, communication skills, self-psychology, and managing their managers</strong>. These are <strong>learnable skills</strong>; rule of thumb: <strong>a habit is learned by doing it for a month</strong>.</p>
+<p><strong>Basics = being organized and communicating well.</strong></p>
+<h3>32.1.1 Follow-Through</h3>
+<ul>
+<li><strong>Follow-through = completing what you committed to do.</strong> Nothing frustrates customers more than <strong>dropped requests</strong>.</li>
+<li>Keep <strong>one organizer</strong> (paper, PDA, electronic) for to-dos and calendar; <strong>combine work and social calendars</strong> (separate ones get out of sync). Memory is imperfect (Einstein didn't memorize his own phone number).</li>
+<li>Trouble-ticket systems ensure <strong>promises aren't forgotten</strong>.</li>
+<li class="case"><span class="tag">Case</span> <strong>Dynamic To-Do Lists</strong> — Tom keeps <strong>365 lists a year</strong>: copies unfinished items forward, <strong>tags must-do-today items each morning</strong>, renegotiates deadlines, and gets <strong>closure</strong> every day.</li>
+<li><strong>Any system is better than no system.</strong></li>
+</ul>
+<h3>32.1.2 Time Management</h3>
+<p><strong>Time management = using time wisely.</strong> <strong>Work smarter, not harder</strong> — customers see <strong>results, not effort</strong>.</p>
+<ul>
+<li><strong>Why it's hard:</strong> SA work is <strong>interrupt-driven</strong> (like a bus driver stopping for every passenger). <strong>Break the cycle:</strong> split the day (projects in the morning, requests in the afternoon), trade interrupt duty with a coworker, or come in early.</li>
+<li><strong>Deflecting interruptions:</strong> write the request on your to-do list; if you can't, say so and ask for an <strong>email or ticket</strong> (even suggest the wording). <strong>Don't sound rude.</strong></li>
+<li><strong>Goal setting:</strong> stop "mopping the floor instead of fixing the leak." List goals, prioritize, drop low-priority ones, plan small steps. <strong>Review accomplishments on the first day of each month</strong>; review status weekly.</li>
+<li><strong>Daily planning:</strong> start each day by <strong>reviewing and prioritizing your to-do list</strong> (a 5-minute investment). Case: <strong>Putting It All Together</strong> — Tom checks alerts and urgent mail only, plans the day in <strong>1-hour blocks</strong>, then spends the <strong>first (uninterrupted) hour on his top-priority item</strong>. Find your <strong>biological peak hour</strong> too.</li>
+<li><strong>Handling paper once:</strong> <strong>touch each piece of paper (or email) only once</strong> — throw away, act, respond, or file. <strong>File as little as possible; when in doubt, throw it out.</strong> Use an <strong>email archive folder</strong> and filters like <strong>procmail</strong> ("If you aren't using procmail, you're working too hard").</li>
+<li><strong>Staying focused:</strong> clean desk, clean inbox, clean screen (use <strong>virtual screens</strong>); read email in set blocks.</li>
+<li><strong>Daily tasks:</strong> do must-do-today items <strong>first</strong>. Case: <strong>Schedule Daily Tasks Efficiently</strong> — tape changes moved to <strong>right after lunch</strong>. <strong>Never schedule daily tasks at the end of the day.</strong></li>
+<li><strong>Precompiling decisions:</strong> make a decision <strong>once</strong> (like a compiler optimizer) and use a <strong>mantra</strong>: <em>It's always a good time to save your work</em> · <em>Always make backups</em> · <em>Record requests</em> · <em>Change tapes M-W-F</em> · <em>Take the PDA</em> · <strong><em>Sooner is better than later</em></strong>.</li>
+<li><strong>Finding free time:</strong> use "light" times of year; <strong>eliminate rather than automate</strong>; stop reading Usenet; <strong>leave your two busiest mailing lists monthly</strong>; mail filters; come in an hour early; avoid rush hour; take a <strong>time-management class</strong>; <strong>learn perl and make</strong>; meet your <strong>chief customer</strong> to drop items; <strong>hire an assistant</strong> (e.g., student) for tactical tasks.</li>
+<li><strong>Human time wasters (3 steps):</strong> (1) <strong>coach</strong> them tactfully, (2) <strong>work with their management</strong>, (3) last resort: <strong>manage their time</strong> — become their <strong>highest-priority interrupt</strong> (stand in their office).</li>
+<li><strong>Slow bureaucrats:</strong> (1) <strong>befriend them</strong> — be the pleasant one; (2) give them <strong>hundreds of requests at once</strong> so it <strong>escalates to a manager</strong> who can change the process.</li>
+<li><strong>Training:</strong> time-management classes are a <strong>small investment with a big payoff</strong>.</li>
+</ul>
+<h3>32.1.3 Communication Skills</h3>
+<p><strong>All problems can be viewed as communication problems.</strong> You don't have to like someone to work with them — just communicate.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Problem type</th>
+<th>Skill to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>My problems</strong></td>
+<td><strong>I statements</strong> (be heard)</td>
+</tr>
+<tr>
+<td><strong>Your problems</strong></td>
+<td><strong>Active listening</strong> (hear correctly)</td>
+</tr>
+<tr>
+<td><strong>Our problems</strong></td>
+<td>All skills — agree on problem + action plan</td>
+</tr>
+<tr>
+<td><strong>Other people's problems</strong></td>
+<td><strong>Discipline: mind your own business</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>I statements:</strong> form <strong>"I feel [emotion] when you [action]."</strong> Express the <strong>soft emotion (sadness, fear)</strong>, not the <strong>hard emotion (anger)</strong> — anger makes people defensive. Gives a <strong>fixable problem statement</strong>.</li>
+<li><strong>Active listening</strong> — three tools:<ul>
+<li><strong>Mirroring:</strong> repeat back a <strong>shorter, accurate version</strong> before replying (like checking a packet checksum). Start with <strong>"I hear you saying that..."</strong> Case: <strong>Don't Trust Your Ears</strong> — CEO's "smaller team" misunderstanding. Case: <strong>"Say Again?"</strong> — standard phrase for "repeat that."</li>
+<li><strong>Summary statements:</strong> pause to <strong>list the points made so far</strong>; group issues to reveal underlying causes; <strong>vital at the end of meetings</strong> (email it as a record).</li>
+<li><strong>Reflection:</strong> for <strong>angry/upset</strong> people — <strong>name the emotion</strong> ("Wow! You are really upset about this!"). <strong>Deal with emotions before the technical problem.</strong></li>
+</ul>
+</li>
+</ul>
+<h3>32.1.4 Professional Development</h3>
+<ul>
+<li>Training to <strong>maintain and improve skills</strong> + joining <strong>professional organizations</strong>. <strong>Never turn down the opportunity to learn.</strong> Read the <strong>trade journal of your customers' industry</strong>.</li>
+<li><strong>One-day seminars = tactical</strong> (specific skill). <strong>Week-long conferences = strategic</strong> (big picture, networking, community).</li>
+<li>Recommended: <strong>USENIX</strong> and <strong>LOPSA</strong>; <strong>LISA (Large Installation System Administration)</strong> conference.</li>
+</ul>
+<h3>32.1.5 Staying Technical</h3>
+<p>Being offered management is a <strong>compliment</strong> — consider it, but management means <strong>giving up technical duties</strong>. To stay technical, agree with your boss on the line between <strong>"technical lead"</strong> (architecting, deploying) and <strong>"manager"</strong> (<strong>budgets, salary/performance reviews, HR</strong>). Beware <strong>slowly sliding into management</strong>.</p>
+<h3>32.2.1 Learn to Negotiate</h3>
+<p><strong>Negotiation = the art of getting what you want.</strong></p>
+<ul>
+<li><strong>Work toward win-win.</strong> <strong>Win-lose is second best</strong>; <strong>always avoid lose-lose and lose-win</strong>.</li>
+<li><strong>Recognize you're negotiating</strong> — ask <strong>"Is that negotiable?"</strong> Brief your team on <strong>what not to leak</strong> (Case: <strong>Prepare the Team</strong> — start-up leaked its funding deadline). Know the <strong>power dynamic</strong> — it <strong>can shift</strong> (Case: <strong>Power Can Shift</strong> — vendor's year-end quota).</li>
+<li><strong>Plan:</strong> must-haves vs sacrifices, secrets, script the meeting, <strong>be specific</strong>. Cases: <strong>Know Who a Vendor's Competition Is</strong> (Sun mug for HP reps); <strong>Do Your Homework</strong> (stack of mishandled tickets). <strong>Hardball tactics only when you'll never negotiate with that person again.</strong> Case: <strong>Use a Variety of Techniques</strong> — one-tactic manager became isolated.</li>
+<li><strong>Meeting format:</strong> <strong>define terms → agree on common ground → tackle the hard parts</strong>; table slow items.</li>
+<li><strong>Tips:</strong> <strong>ask for what you honestly want</strong> (don't negotiate against yourself); <strong>after an offer, close your mouth</strong> ("the next person to talk is the loser"); <strong>don't reveal your strategy</strong> (ask an agent <strong>"Who pays your commission?"</strong>); <strong>always refuse a first offer</strong> (risky; works once).</li>
+<li><strong>Silence</strong> is a key tool; once you reach agreement, <strong>stop talking</strong>. Case: <strong>Be Careful What You Say</strong> ("Would you like it to be more?"). Book: <strong>The Haggler's Handbook</strong>.</li>
+</ul>
+<h3>32.2.2 Love Your Job</h3>
+<ul>
+<li><strong>Enjoying what you do:</strong> if you won the lottery, what would you do? Do that as a career (<em>Office Space</em>). Case: <strong>Following Our Own Advice</strong> — Christine → Formula 1, Tom → political campaign.</li>
+<li><strong>Being motivated:</strong> <strong>money motivates only short term</strong>; <strong>helping people</strong> and <strong>compliments</strong> are habit-forming motivators. The <strong>critical inner voice</strong> can poison compliments; <strong>shame</strong> (bottled-up problems) hurts productivity. <strong>Accept compliments</strong> — just say <strong>"Thank you!"</strong> Case: <strong>An Unsafe Workplace Is an Unproductive Workplace</strong> — a manager ignored a hostile remark and lost a good SA.</li>
+<li><strong>Happiness:</strong> (cognitive theory) depends on <strong>how you react to events</strong>, not the events. Recognize the critical inner voice and <strong>consider the source</strong>. Use the <strong>EAP (employee assistance program)</strong>.</li>
+<li><strong>Good boss/bad boss:</strong> <strong>your manager affects how much you love your job more than the work itself</strong>; most people <strong>leave because of their bosses</strong>.</li>
+<li><strong>Accepting criticism:</strong> thank the critic; separate <strong>constructive vs nonconstructive</strong> criticism. <strong>Don't "should" yourself</strong> — replace <strong>"I should have" with "next time, I will."</strong></li>
+<li><strong>Support structure:</strong> people to go to for office-politics, technical, and life advice.</li>
+<li><strong>Ask for help:</strong> it's <strong>not a weakness</strong>; solve problems while small. Case: <strong>Should Have Asked for Help</strong> — speaker with transparencies rented a laptop and retyped his talk instead of asking coordinators.</li>
+<li><strong>Balance work and personal life:</strong> avoid <strong>burnout</strong>; respect family (<strong>"Nobody's last words were 'I wish I had spent more time at the office'"</strong>), listen to your body, <strong>take your vacations</strong> — they reveal whether your job is <strong>documented and covered</strong>.</li>
+<li><strong>Awards wall:</strong> post thank-you notes and awards where you see them daily; email version = a <strong>"feathers" folder</strong>.</li>
+</ul>
+<h3>32.2.3 Managing Your Manager</h3>
+<ul>
+<li><strong>Your job is to make your boss a success</strong> (your tasks are a fraction of her goals). A successful boss gets promoted and <strong>takes you along</strong>; managers invest in <strong>star performers</strong>. Case: <strong>Raise-Time Humor</strong>.</li>
+<li><strong>Managing = steering the boat others row.</strong> Case: <strong>Pleasing the Visionary</strong> — frame basic upgrades as <strong>steps toward the dean's futuristic goals</strong>.</li>
+<li><strong>Make your needs known</strong> (managers can't read minds) but don't pester. Share your <strong>career goal once or twice a year</strong>. Case: <strong>Steer Promotions to You</strong> — Tom <strong>asked for every promotion</strong>.</li>
+<li><strong>When overloaded:</strong> don't complain — bring your <strong>to-do list with time estimates</strong> and <strong>ask your boss to prioritize</strong>.</li>
+<li><strong>Upward delegation:</strong> <strong>don't delegate busywork upward</strong>; delegate things needing <strong>the boss's authority</strong> that make whole classes of requests go away (e.g., a <strong>policy</strong> that only supported servers are backed up). Case: <strong>Use Your Boss's Power When Needed</strong> — non-work PC requests (MIDI cards, game OS). Watch <strong>quantity and timing</strong>; ask right <strong>after receiving a compliment</strong>.</li>
+</ul>
+<p><strong>Conclusion:</strong> happiness and success are <strong>interrelated</strong>. <strong>Finding free time = eliminating time wasters, not managing them better.</strong> You deserve to be happy at work.</p></div></section>
+  <section class="chapter" id="cheat" data-title="Cheat Sheet">
+    <header class="ch-head"><div class="ch-num">Final review</div><h2>Quick-Recall Cheat Sheet</h2></header>
+    <div class="ch-body">
+      <div class="cs-controls">
+        <button class="btn on" id="m-table">Table</button>
+        <button class="btn" id="m-cards">Flashcards</button>
+        <select id="cs-ch"><option value="">All chapters</option></select>
+        <button class="btn" id="tg-ans">Hide answers</button>
+        <button class="btn" id="shuffle">Shuffle</button>
+      </div>
+      <div class="cs-table-wrap"><div class="tw"><table class="cs-table"><thead><tr><th>Term / rule</th><th>Answer</th><th>Ch.</th></tr></thead><tbody id="cs-body"></tbody></table></div><p class="hint" id="ans-hint" style="display:none">Click a blurred answer to reveal it.</p></div>
+      <div class="flash">
+        <div class="card" id="card"><div class="card-inner">
+          <div class="face front"><span class="lbl" id="f-ch"></span><div class="q" id="f-q"></div></div>
+          <div class="face back"><span class="lbl">Answer</span><div class="q" id="f-a"></div></div>
+        </div></div>
+        <div class="card-nav"><button class="btn" id="prev">← Prev</button><span class="count" id="f-count"></span><button class="btn primary" id="next">Next →</button></div>
+        <p class="hint">Click the card or press Space to flip · ← / → to move</p>
+      </div>
+    </div>
+  </section>
+  <div class="empty" id="empty">No matches. Try a different term.</div>
+</main>
+</div>
+<button class="totop" id="totop" aria-label="Back to top">↑</button>
+<script>
+(function(){
+  var store={get:function(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+  var CARDS=[{"q": "\"If you aren't monitoring it...\"", "a": "...you aren't managing it", "ch": "22"}, {"q": "Monitoring bandwidth limit", "a": "<strong>≤ 1%</strong> of available bandwidth", "ch": "22"}, {"q": "Historical vs real-time tools", "a": "<strong>Cricket, Orca</strong> vs <strong>Nagios, Big Brother</strong>", "ch": "22"}, {"q": "Condensing vs expiring data", "a": "Replace with <strong>averages</strong> vs <strong>delete</strong>", "ch": "22"}, {"q": "MIB", "a": "Group of related SNMP variables", "ch": "22"}, {"q": "SNMP default community strings", "a": "<strong>public</strong> (GET), <strong>private</strong> (PUT)", "ch": "22"}, {"q": "Active monitoring", "a": "Auto-fixes problems; only a <strong>temporary fix</strong>", "ch": "22"}, {"q": "Metamonitoring", "a": "<strong>Monitoring the monitoring system</strong>", "ch": "22"}, {"q": "End-to-end test", "a": "Monitor <strong>acts as a customer</strong> (e.g., Mailping)", "ch": "22"}, {"q": "Best scaling for monitoring", "a": "Many data gatherers + <strong>one central master</strong>", "ch": "22"}, {"q": "Email's focal point", "a": "<strong>Reliability</strong>, then scalability", "ch": "23"}, {"q": "Most fundamental namespace rule", "a": "<strong>Same address internally and externally</strong>", "ch": "23"}, {"q": "Preferred address style", "a": "<strong>Unique name tokens</strong> (not first.last)", "ch": "23"}, {"q": "MTA / MDA / MUA", "a": "Transport / delivery (storage) / client", "ch": "23"}, {"q": "Hostname masquerading", "a": "Relay <strong>hides the sending machine's name</strong>", "ch": "23"}, {"q": "Spam", "a": "<strong>UCE</strong>; block at the <strong>server</strong>", "ch": "23"}, {"q": "SMTP / POP3 / IMAP4 ports", "a": "<strong>25 / 110 / 143</strong>", "ch": "23"}, {"q": "Mail spool rule of thumb", "a": "Peak = <strong>2×</strong> normal", "ch": "23"}, {"q": "Client-access redundancy", "a": "At <strong>IP level</strong>: layer-4 load balancer or <strong>VRRP</strong>", "ch": "23"}, {"q": "Why limit email backups", "a": "<strong>Subpoenas</strong> make searching old backups costly", "ch": "23"}, {"q": "Printing ranks", "a": "<strong>Second only to email</strong>", "ch": "24"}, {"q": "Print spooler", "a": "Holds jobs <strong>until the printer is ready</strong>", "ch": "24"}, {"q": "Printer naming", "a": "<strong>Geographic</strong> (by location)", "ch": "24"}, {"q": "Peer-to-peer vs central funnel", "a": "Simple but hard to admin vs control but <strong>single point of failure</strong>", "ch": "24"}, {"q": "3 printing docs", "a": "<strong>How-to-print</strong>, <strong>list of printers</strong>, <strong>printer labels</strong>", "ch": "24"}, {"q": "Printer abuse", "a": "<strong>Can't solve social problems with technology</strong>", "ch": "24"}, {"q": "Never outsource in remote access", "a": "<strong>Authentication/authorization database</strong>", "ch": "27"}, {"q": "Ultimate centralization", "a": "<strong>Outsourcing</strong>", "ch": "27"}, {"q": "Remote auth method", "a": "<strong>One-time password / token</strong>, one shared database", "ch": "27"}, {"q": "Remote access is part of...", "a": "The <strong>perimeter</strong>, even if outsourced", "ch": "27"}, {"q": "Max technologies supported", "a": "<strong>2 + modem dial-in</strong>; hard cutover date", "ch": "27"}, {"q": "Depot types", "a": "UNIX = <strong>used in real time</strong>; Windows = <strong>to be installed</strong>", "ch": "28"}, {"q": "Trojan horse", "a": "Malicious program with <strong>another program's name</strong>", "ch": "28"}, {"q": "Wrapper script", "a": "Detects platform, <strong>calls the right binary</strong>", "ch": "28"}, {"q": "Bounce links", "a": "Depot → local file → back to depot", "ch": "28"}, {"q": "Second-class citizens", "a": "OSs with <strong>minimal support</strong>, minimal depot", "ch": "28"}, {"q": "GET vs POST", "a": "<strong>Read-only</strong> vs <strong>update</strong>", "ch": "29"}, {"q": "301 / 401 / 403 / 404", "a": "Moved permanently / needs auth / forbidden / not found", "ch": "29"}, {"q": "Webmaster vs web SA", "a": "<strong>Content</strong> vs <strong>technical machinery</strong>", "ch": "29"}, {"q": "Web SLA metric", "a": "<strong>Latency at a given QPS</strong>", "ch": "29"}, {"q": "Horizontal vs vertical scaling", "a": "<strong>Replicate</strong> vs <strong>separate subservices</strong>", "ch": "29"}, {"q": "LAMP", "a": "<strong>Linux, Apache, MySQL, Perl/PHP/Python</strong>", "ch": "29"}, {"q": "Self-signed vs CA-signed cert", "a": "Encrypts only vs <strong>proves identity</strong>", "ch": "29"}, {"q": "Validate input by...", "a": "<strong>Inclusion</strong>, not exclusion", "ch": "29"}, {"q": "Update / Change / Fix", "a": "New material / <strong>site structure</strong> / correct errors", "ch": "29"}, {"q": "Web production servers", "a": "<strong>Draft → QA → Live</strong> (+ golden master)", "ch": "29"}, {"q": "Mashup", "a": "Site using <strong>other sites' data/APIs</strong>", "ch": "29"}, {"q": "Perception vs visibility", "a": "<strong>Quality</strong> vs <strong>quantity</strong>", "ch": "31"}, {"q": "Goodwill bank account", "a": "~<strong>1 bad per 5 good</strong>", "ch": "31"}, {"q": ">1 SA attitude problem<", "a": "<strong>Disrespect for customers</strong>", "ch": "31"}, {"q": "Request priority order", "a": "<strong>Emergencies → quick → long</strong>", "ch": "31"}, {"q": "Mutual-interruption shield", "a": "Two SAs <strong>alternate</strong> shielding each other", "ch": "31"}, {"q": "Clerk vs advocate", "a": "<strong>Reactive</strong> vs <strong>proactive</strong>", "ch": "31"}, {"q": "Automating anything", "a": "<strong>Do it manually first</strong>, then automate those steps", "ch": "31"}, {"q": "SA visibility paradox", "a": "Noticed <strong>only when things break</strong>", "ch": "31"}, {"q": "Mass email", "a": "Key info in <strong>first sentence</strong>; <strong>ACTION REQUIRED</strong>; <strong>2 contact methods</strong>", "ch": "31"}, {"q": "Follow-through", "a": "Completing <strong>what you committed to</strong>", "ch": "32"}, {"q": "Handle paper...", "a": "<strong>Only once</strong>", "ch": "32"}, {"q": "Precompiled decision mantra", "a": "<strong>Sooner is better than later</strong>", "ch": "32"}, {"q": "I statement", "a": "<strong>\"I feel [emotion] when you [action]\"</strong> (soft emotion)", "ch": "32"}, {"q": "Active listening tools", "a": "<strong>Mirroring, summary, reflection</strong>", "ch": "32"}, {"q": "Seminar vs conference", "a": "<strong>Tactical</strong> vs <strong>strategic</strong>", "ch": "32"}, {"q": "Best negotiation outcome", "a": "<strong>Win-win</strong> (win-lose is 2nd)", "ch": "32"}, {"q": "Your real job", "a": "<strong>Make your boss a success</strong>", "ch": "32"}, {"q": "Upward delegation", "a": "Only for things needing <strong>the boss's authority</strong>", "ch": "32"}];
+  var chapters=[].slice.call(document.querySelectorAll('section.chapter'));
+  var navLinks=[].slice.call(document.querySelectorAll('#nav a'));
+  // jump select
+  var jump=document.getElementById('jump');
+  chapters.forEach(function(s){var o=document.createElement('option');o.value=s.id;o.textContent=(s.id==='cheat'?'★ ':s.id.replace('ch','Ch ')+' — ')+s.dataset.title;jump.appendChild(o)});
+  jump.onchange=function(){if(jump.value)document.getElementById(jump.value).scrollIntoView()};
+  // reviewed progress
+  var done=store.get('it412-done')||{};
+  function renderDone(){
+    var n=0;
+    document.querySelectorAll('.done-btn').forEach(function(b){var on=!!done[b.dataset.id];b.classList.toggle('done',on);b.textContent=on?'✓ Reviewed':'Mark reviewed';if(on)n++});
+    navLinks.forEach(function(a){a.classList.toggle('done',!!done[a.dataset.id])});
+    var total=document.querySelectorAll('.done-btn').length;
+    document.getElementById('prog-text').textContent=n+' of '+total+' chapters reviewed';
+    document.getElementById('prog-bar').style.width=(100*n/total)+'%';
+  }
+  document.querySelectorAll('.done-btn').forEach(function(b){b.onclick=function(){done[b.dataset.id]=!done[b.dataset.id];store.set('it412-done',done);renderDone()}});
+  renderDone();
+  // active nav on scroll
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){navLinks.forEach(function(a){a.classList.toggle('active',a.dataset.id===e.target.id)})}})},{rootMargin:'-20% 0px -70% 0px'});
+  chapters.forEach(function(s){io.observe(s)});
+  // toggles
+  var prefs=store.get('it412-prefs')||{};
+  function applyPrefs(){
+    document.documentElement.dataset.theme=prefs.dark?'dark':'light';
+    document.body.classList.toggle('plain',!!prefs.plain);
+    document.body.classList.toggle('nocases',!!prefs.nocases);
+    document.getElementById('tg-theme').textContent=prefs.dark?'Light mode':'Dark mode';
+    document.getElementById('tg-hl').classList.toggle('on',!prefs.plain);
+    document.getElementById('tg-case').classList.toggle('on',!prefs.nocases);
+  }
+  function tog(k){prefs[k]=!prefs[k];store.set('it412-prefs',prefs);applyPrefs()}
+  document.getElementById('tg-theme').onclick=function(){tog('dark')};
+  document.getElementById('tg-hl').onclick=function(){tog('plain')};
+  document.getElementById('tg-case').onclick=function(){tog('nocases')};
+  applyPrefs();
+  // search
+  var q=document.getElementById('q'),timer;
+  function clearMarks(){document.querySelectorAll('mark.sr').forEach(function(m){var p=m.parentNode;p.replaceChild(document.createTextNode(m.textContent),m);p.normalize()})}
+  function markIn(root,term){
+    var re=new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),hits=0;
+    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),nodes=[];
+    while(w.nextNode())nodes.push(w.currentNode);
+    nodes.forEach(function(n){
+      if(!re.test(n.nodeValue))return;re.lastIndex=0;
+      var frag=document.createDocumentFragment(),s=n.nodeValue,last=0,m;
+      while((m=re.exec(s))){frag.appendChild(document.createTextNode(s.slice(last,m.index)));var mk=document.createElement('mark');mk.className='sr';mk.textContent=m[0];frag.appendChild(mk);last=m.index+m[0].length;hits++}
+      frag.appendChild(document.createTextNode(s.slice(last)));n.parentNode.replaceChild(frag,n);
+    });
+    return hits;
+  }
+  function doSearch(){
+    clearMarks();var t=q.value.trim(),any=false;
+    chapters.forEach(function(s){
+      var link=navLinks.filter(function(a){return a.dataset.id===s.id})[0];
+      if(!t){s.classList.remove('hidden');if(link)link.classList.remove('hidden');any=true;return}
+      var h=t.length>1?markIn(s.querySelector('.ch-body'),t):0;
+      s.classList.toggle('hidden',!h);if(link)link.classList.toggle('hidden',!h);if(h)any=true;
+    });
+    document.getElementById('empty').style.display=any?'none':'block';
+    var first=document.querySelector('mark.sr');if(t&&first)first.scrollIntoView({block:'center'});
+  }
+  q.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(doSearch,250)});
+  // cheat sheet
+  var csBody=document.getElementById('cs-body'),csCh=document.getElementById('cs-ch');
+  var chs=[];CARDS.forEach(function(c){if(chs.indexOf(c.ch)<0)chs.push(c.ch)});
+  chs.forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent='Chapter '+c;csCh.appendChild(o)});
+  var order=CARDS.map(function(_,i){return i}),idx=0;
+  function list(){return order.filter(function(i){return !csCh.value||CARDS[i].ch===csCh.value})}
+  function renderTable(){
+    csBody.innerHTML='';
+    list().forEach(function(i){var c=CARDS[i],tr=document.createElement('tr');tr.innerHTML='<td>'+c.q+'</td><td class="ans"><span>'+c.a+'</span></td><td class="chc">'+c.ch+'</td>';tr.querySelector('.ans').onclick=function(){this.classList.toggle('shown')};csBody.appendChild(tr)});
+  }
+  var card=document.getElementById('card');
+  function renderCard(){
+    var L=list();if(!L.length)return;idx=(idx+L.length)%L.length;var c=CARDS[L[idx]];
+    card.classList.remove('flipped');
+    document.getElementById('f-q').innerHTML=c.q;document.getElementById('f-a').innerHTML=c.a;
+    document.getElementById('f-ch').textContent='Chapter '+c.ch;
+    document.getElementById('f-count').textContent=(idx+1)+' / '+L.length;
+  }
+  card.onclick=function(){card.classList.toggle('flipped')};
+  document.getElementById('next').onclick=function(){idx++;renderCard()};
+  document.getElementById('prev').onclick=function(){idx--;renderCard()};
+  csCh.onchange=function(){idx=0;renderTable();renderCard()};
+  document.getElementById('shuffle').onclick=function(){for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t}idx=0;renderTable();renderCard()};
+  var wrap=document.querySelector('#cheat .ch-body'),mt=document.getElementById('m-table'),mc=document.getElementById('m-cards');
+  mt.onclick=function(){wrap.classList.remove('mode-cards');mt.classList.add('on');mc.classList.remove('on')};
+  mc.onclick=function(){wrap.classList.add('mode-cards');mc.classList.add('on');mt.classList.remove('on');renderCard()};
+  document.getElementById('tg-ans').onclick=function(){var on=wrap.classList.toggle('hide-ans');this.classList.toggle('on',on);this.textContent=on?'Show answers':'Hide answers';document.getElementById('ans-hint').style.display=on?'block':'none';csBody.querySelectorAll('.ans').forEach(function(a){a.classList.remove('shown')})};
+  document.addEventListener('keydown',function(e){
+    if(!wrap.classList.contains('mode-cards')||document.activeElement===q)return;
+    var r=card.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;
+    if(e.key==='ArrowRight'){idx++;renderCard()}else if(e.key==='ArrowLeft'){idx--;renderCard()}else if(e.key===' '){e.preventDefault();card.classList.toggle('flipped')}
+  });
+  renderTable();renderCard();
+  var tt=document.getElementById('totop');
+  addEventListener('scroll',function(){tt.classList.toggle('show',scrollY>800)});
+  tt.onclick=function(){scrollTo(0,0)};
+})();
+</script>
+</body>
+</html>
